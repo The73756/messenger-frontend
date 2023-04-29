@@ -1,26 +1,16 @@
-import React, { useEffect, useMemo } from "react";
+import { FC, PropsWithChildren, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
-interface PortalProps {
-  children: React.ReactNode;
-}
-
-export const Portal: React.FC<PortalProps> = ({ children }) => {
-  const container = useMemo(() => {
-    if (typeof window === "undefined" || !document) {
-      return null;
-    }
-    return document.createElement("div")
-  }, []);
+export const Portal: FC<PropsWithChildren> = ({ children }) => {
+  const ref = useRef<Element | null>(null);
+  const [mounted, setMounted] = useState(false);
+  console.log("hello");
 
   useEffect(() => {
-    if (!container) return;
-    document.body.appendChild(container);
-    return () => {
-      document.body.removeChild(container);
-    };
-  }, [container]);
+    ref.current = document.body;
 
-  if (!container) return null;
-  return createPortal(children, container);
+    setMounted(true);
+  }, []);
+
+  return mounted && ref.current ? createPortal(children, ref.current) : null;
 };
