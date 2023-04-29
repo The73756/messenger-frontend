@@ -26,7 +26,6 @@
   "rules": {
     "quotes": ["warn", "double"],
     "object-curly-spacing": ["warn", "always"],
-    "linebreak-style": ["warn", "unix"],
     "react/function-component-definition": [
       "warn",
       {
