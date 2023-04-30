@@ -1,21 +1,17 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { FC, PropsWithChildren, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
-interface PortalProps {
-  children: React.ReactNode
-}
-
-export const Portal: React.FC<PortalProps> = ({ children }) => {
-  const [container] = useState<HTMLDivElement>(() => document.createElement("div"));
+export const Portal: FC<PropsWithChildren> = ({ children }) => {
+  const ref = useRef<Element | null>(null);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    document.body.appendChild(container);
-    return () => {
-      document.body.removeChild(container);
-    }
+    ref.current = document.body;
+
+    setMounted(true);
   }, []);
 
-  return createPortal(children, container);
+  return mounted && ref.current ? createPortal(children, ref.current) : null;
 };

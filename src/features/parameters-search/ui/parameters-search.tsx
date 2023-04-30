@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 
-import { Select } from "@/shared/ui";
+// import { Select } from "@/shared/ui";
 
 import { cities } from "../consts";
 
