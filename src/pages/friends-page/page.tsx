@@ -1,15 +1,14 @@
-import { Chat } from "@/widgets/chat";
-import { ChatInfo } from "@/widgets/chat-info";
 import { ChatsList } from "@/widgets/chats-list";
+import { Friends } from "@/widgets/friends";
 import { MainLayout } from "@/widgets/layouts";
-export const HomePage = () => {
+
+export const FriendsPage = () => {
   return (
     <MainLayout>
       <main>
         <div className="flex gap-2">
-          <ChatsList/>
-          <Chat/>
-          <ChatInfo/>
+          <ChatsList />
+          <Friends />
         </div>
       </main>
     </MainLayout>
