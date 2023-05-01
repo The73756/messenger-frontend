@@ -14,8 +14,8 @@ export const Chat = () => {
       : MessageStatus.PENDING;
 
   return (
-    <div className="flex max-h-[92vh] w-full flex-col">
-      <div className="navbar bg-base-100">
+    <div className="flex max-h-[92vh] w-full flex-col ">
+      <div className="navbar bg-base-100 px-0">
         <div className="flex flex-1 items-center gap-4">
           <div>
             <h2 className="text-xl font-medium">Название чата</h2>
