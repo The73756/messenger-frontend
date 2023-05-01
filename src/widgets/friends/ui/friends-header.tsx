@@ -16,10 +16,10 @@ export const FriendsHeader = () => {
         <input
           type="text"
           placeholder="Поиск друзей"
-          className="flex-1 bg-inherit text-base outline-none pl-2"
+          className="flex-1 text-base outline-none pl-2 bg-transparent"
         />
-        <div className="relative">
-          <button className="flex items-center gap-1 h-8 px-2 hover:underline">
+        <div className="dropdown-end dropdown">
+          <button tabIndex={0} className="flex items-center gap-1 h-8 px-2 hover:underline">
             Параметры
             <Icon name="figures/arrow" className="w-2 h-2 translate-y-0.5" />
           </button>

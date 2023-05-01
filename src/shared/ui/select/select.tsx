@@ -1,27 +1,41 @@
 "use client";
 
-import { FC, useState } from "react";
+import { FC, useEffect, useState, MouseEvent } from "react";
 
 import { Icon } from "@/shared/ui";
+
+import SelectItem from "./select-item";
 
 interface SelectProps {
   value: string | number;
   changeValue: (val: any) => void;
-  arrayValues: string[] | number[];
+  items: string[] | number[];
 }
 
-export const Select: FC<SelectProps> = ({ value, changeValue, arrayValues }) => {
+export const Select: FC<SelectProps> = ({ value, changeValue = null, items }) => {
   const [isShow, setIsShow] = useState(false);
 
   const handlerClick = (value: string | number) => {
-    changeValue(value);
+    if (changeValue) {
+      changeValue(value);
+      setIsShow(false);
+    }
+  }
+
+  const handlerClose = (): void => {
     setIsShow(false);
+    return document.removeEventListener("click", handlerClose);
+  }
+
+  const openSelect = (e: MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    setIsShow(!isShow);
   }
 
   return (
     <div className="relative">
       <button
-        onClick={() => setIsShow(!isShow)}
+        onClick={openSelect}
         className="flex w-full items-center justify-between gap-2 whitespace-nowrap rounded border-[1px] border-solid border-slate-500 p-1 text-sm">
         {value}
         <Icon
@@ -30,18 +44,7 @@ export const Select: FC<SelectProps> = ({ value, changeValue, arrayValues }) => 
         />
       </button>
       {isShow && (
-        <div className="custom-scrollbar absolute left-0 right-0 max-h-36 translate-y-[-4px] overflow-y-auto rounded-sm border-[1px] border-solid border-slate-500 bg-slate-700">
-          <ul>
-            {arrayValues.map((city) => (
-              <li
-                key={city}
-                onClick={() => handlerClick(city)}
-                className="cursor-pointer p-1 text-sm hover:bg-slate-800">
-                {city}
-              </li>
-            ))}
-          </ul>
-        </div>
+        <SelectItem isOpen={isShow} items={items} handlerClick={handlerClick} handlerClose={handlerClose} />
       )}
     </div>
   );

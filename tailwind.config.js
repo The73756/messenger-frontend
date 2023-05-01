@@ -5,6 +5,9 @@ module.exports = {
     container: {
       center: true,
     },
+    colors: {
+      "main": "#4c91d4"
+    }
   },
   plugins: [require("daisyui"), require("tailwind-scrollbar")({ nocompatible: true })],
 };
