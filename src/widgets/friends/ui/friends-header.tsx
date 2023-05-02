@@ -2,15 +2,15 @@
 
 import { ParametersSearch } from "@/features/parameters-search";
 
-import { Icon } from "@/shared/ui";
+import { Button, Icon } from "@/shared/ui";
 
 export const FriendsHeader = () => {
   return (
     <div>
       <div className="mb-2 flex gap-2">
-        <button className="btn">Все друзья 33</button>
-        <button className="btn">Друзья онлайн</button>
-        <button className="btn-primary btn ml-auto">Найти друзей</button>
+        <Button>Все друзья 33</Button>
+        <Button>Друзья онлайн</Button>
+        <Button className="bg-main hover:bg-main-focus ml-auto">Найти друзей</Button>
       </div>
       <div className="flex items-center w-full rounded border-[1px] border-solid border-slate-500">
         <input
