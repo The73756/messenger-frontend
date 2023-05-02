@@ -12,7 +12,7 @@
   }
 
   .resizeHandler {
-    @apply relative rounded-full bg-base-content bg-transparent transition-opacity hover:bg-neutral active:bg-neutral-focus;
+    @apply relative rounded-full bg-base-content bg-transparent transition-colors hover:bg-neutral active:bg-neutral-focus;
   }
 
   .resizeHandler:after {
