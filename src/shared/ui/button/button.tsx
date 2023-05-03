@@ -1,18 +1,18 @@
-import { FC, ReactNode } from "react";
+import { ButtonHTMLAttributes, FC, ReactNode } from "react";
 
-interface ButtonProps {
-  className?: string;
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
   children: ReactNode;
-  onClick?: () => void;
 }
 
-export const Button: FC<ButtonProps> = ({ className, children, onClick }) => {
+export const Button: FC<ButtonProps> = ({ className = "", type="button" , children, ...props }) => {
   return (
     <button
-      onClick={onClick && onClick}
+      type={type}
       className={
-        "btn h-auto min-h-0 py-1 text-sm normal-case" + (className ? ` ${className}` : "")
-      }>
+        `btn h-auto min-h-0 py-1 text-sm normal-case ${className}`
+      }
+      {...props}
+    >
       {children}
     </button>
   );
