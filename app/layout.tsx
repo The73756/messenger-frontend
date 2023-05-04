@@ -1,17 +1,14 @@
-import { ReactNode } from "react";
-import "./globals.css";
+import { PropsWithChildren } from "react";
+
+import { NextLayout } from "@/app";
 
 export const metadata = {
   title: "Messenger",
   description: "Simple messenger app",
 };
 
-const RootLayout = ({ children }: { children: ReactNode }) => {
-  return (
-    <html lang="en" data-theme="night">
-      <body>{children}</body>
-    </html>
-  );
+const RootLayout = ({ children }: PropsWithChildren) => {
+  return <NextLayout>{children}</NextLayout>;
 };
 
 export default RootLayout;

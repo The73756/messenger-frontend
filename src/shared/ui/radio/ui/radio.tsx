@@ -11,23 +11,19 @@ export const Radio: FC<RadioProps> = ({ value, name, id, checked }) => {
   return (
     <div className="flex items-center gap-2">
       <label
-        className="relative flex cursor-pointer items-center rounded-full h-3 w-3"
+        className="relative flex h-3 w-3 cursor-pointer items-center rounded-full"
         htmlFor={id}
-        data-ripple-dark="true"
-      >
+        data-ripple-dark="true">
         <input
           id={id}
           name={name}
           type="radio"
-          className="peer relative h-full w-full cursor-pointer appearance-none rounded-full border border-white checked:border-primary checked:bg-primary"
+          className="border-white peer relative h-full w-full cursor-pointer appearance-none rounded-full border checked:border-primary checked:bg-primary"
           checked={checked}
           onChange={() => {}}
         />
       </label>
-      <label
-        className="mt-px cursor-pointer select-none text-sm"
-        htmlFor={id}
-      >
+      <label className="mt-px cursor-pointer select-none text-sm" htmlFor={id}>
         {value}
       </label>
     </div>

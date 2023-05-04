@@ -7,9 +7,9 @@ export const HomePage = () => {
     <MainLayout>
       <main>
         <div className="flex gap-2">
-          <ChatsList/>
-          <Chat/>
-          <ChatInfo/>
+          <ChatsList />
+          <Chat />
+          <ChatInfo />
         </div>
       </main>
     </MainLayout>
