@@ -1,11 +1,13 @@
 import React, { useRef } from "react";
 import { CSSTransition } from "react-transition-group";
 
+
 import { MenuList } from "@/features/menu-list";
 
 import { UserCard } from "@/entities/user-card";
 
 import { useSwipe } from "../lib";
+
 
 interface BurgerProps {
   isShow: boolean;
@@ -25,7 +27,7 @@ export const Burger: React.FC<BurgerProps> = ({ isShow, close }) => {
         {...handlersSwipe}
         ref={burgerRef}
         onClick={(e) => e.stopPropagation()}
-        className="burger fixed bottom-0 left-0 top-0 z-20 flex">
+        className="burger fixed z-20 bottom-0 left-0 top-0 flex">
         <div className="flex h-full w-72 flex-col overflow-y-auto bg-neutral p-3 shadow">
           <div className="space-y-3">
             <UserCard />

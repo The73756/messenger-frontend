@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useState, MouseEvent } from "react";
+import { FC, useEffect, useState, MouseEvent } from "react";
 
 import { Icon } from "@/shared/ui";
 
@@ -20,23 +20,23 @@ export const Select: FC<SelectProps> = ({ value, changeValue = null, items }) =>
       changeValue(value);
       setIsShow(false);
     }
-  };
+  }
 
   const handlerClose = (): void => {
     setIsShow(false);
     return document.removeEventListener("click", handlerClose);
-  };
+  }
 
   const openSelect = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     setIsShow(!isShow);
-  };
+  }
 
   return (
     <div className="relative">
       <button
         onClick={openSelect}
-        className="border-slate-500 flex w-full items-center justify-between gap-2 whitespace-nowrap rounded border-[1px] border-solid p-1 text-sm">
+        className="flex w-full items-center justify-between gap-2 whitespace-nowrap rounded border-[1px] border-solid border-slate-500 p-1 text-sm">
         {value}
         <Icon
           name="figures/arrow"
@@ -44,12 +44,7 @@ export const Select: FC<SelectProps> = ({ value, changeValue = null, items }) =>
         />
       </button>
       {isShow && (
-        <SelectItem
-          isOpen={isShow}
-          items={items}
-          handlerClick={handlerClick}
-          handlerClose={handlerClose}
-        />
+        <SelectItem isOpen={isShow} items={items} handlerClick={handlerClick} handlerClose={handlerClose} />
       )}
     </div>
   );

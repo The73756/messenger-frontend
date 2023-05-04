@@ -9,28 +9,22 @@ import { Button } from "@/shared/ui/button";
 
 export const FriendsNav = () => {
   const { increment } = userSlice.actions;
-  const { num } = useAppSelector((state) => state.user);
+  const { num } = useAppSelector(state => state.user);
   const dispatch = useAppDispatch();
-
+  
   return (
-    <div className="border-1 border-gray-500 h-fit max-h-[92vh] w-full max-w-xs rounded border p-1">
-      <Button onClick={() => dispatch(increment(1))}>increment</Button>
+    <div className="max-w-xs max-h-[92vh] h-fit w-full p-1 rounded border border-1 border-gray-500">
+      <Button onClick={() => dispatch(increment(2))}>increment</Button>
       {num}
       <ul>
         <li>
-          <Link href="/" className="bg-gray-700 block w-full rounded p-2 text-sm">
-            Мои друзья
-          </Link>
+          <Link href="/" className="block text-sm p-2 rounded bg-gray-700 w-full">Мои друзья</Link>
         </li>
         <li>
-          <Link href="/" className="text-sm">
-            Заявки в друзья
-          </Link>
+          <Link href="/" className="text-sm">Заявки в друзья</Link>
         </li>
         <li>
-          <Link href="/" className="text-sm">
-            Поиск друзей
-          </Link>
+          <Link href="/" className="text-sm">Поиск друзей</Link>
         </li>
       </ul>
     </div>

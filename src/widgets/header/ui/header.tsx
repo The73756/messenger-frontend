@@ -31,9 +31,9 @@ export const Header = () => {
       <button
         onClick={() => setIsShowBurger(true)}
         className="flex flex-col items-start space-y-2 lg:hidden">
-        <div className="bg-gray-600 h-0.5 w-8"></div>
-        <div className="bg-gray-600 h-0.5 w-8"></div>
-        <div className="bg-gray-600 h-0.5 w-6"></div>
+        <div className="h-0.5 w-8 bg-gray-600"></div>
+        <div className="h-0.5 w-8 bg-gray-600"></div>
+        <div className="h-0.5 w-6 bg-gray-600"></div>
       </button>
       <Portal>
         <div

@@ -32,16 +32,14 @@ export const ParametersSearch = () => {
   };
 
   return (
-    <div
-      tabIndex={0}
-      className="bg-slate-700 dropdown-content absolute right-0 mt-2 w-40 rounded p-2 shadow">
+    <div tabIndex={0} className="absolute shadow right-0 mt-2 w-40 rounded bg-slate-700 p-2 dropdown-content">
       <span className="mb-2 block text-sm font-medium">Город</span>
       <Select value={city || "Выберите город"} items={cities} changeValue={changeCity} />
-      <span className="mb-2 mt-2 block text-sm font-medium">Возраст</span>
+      <span className="mt-2 mb-2 block text-sm font-medium">Возраст</span>
       <div className="flex items-center">
-        <span className="mr-2 block text-sm">от</span>
+        <span className="block text-sm mr-2">от</span>
         <Select value={minAge} items={ages} changeValue={changeMinAge} />
-        <span className="ml-auto mr-2 block text-sm">до</span>
+        <span className="block text-sm ml-auto mr-2">до</span>
         <Select value={maxAge} items={ages} changeValue={changeMaxAge} />
       </div>
       <span className="mb-2 block text-sm font-medium">Пол</span>

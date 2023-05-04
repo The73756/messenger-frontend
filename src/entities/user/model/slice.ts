@@ -5,8 +5,8 @@ interface UserState {
 }
 
 const initialState: UserState = {
-  num: 0,
-};
+  num: 0
+}
 
 export const userSlice = createSlice({
   name: "user",
@@ -14,6 +14,7 @@ export const userSlice = createSlice({
   reducers: {
     increment(state, action: PayloadAction<number>) {
       state.num += action.payload;
-    },
-  },
-});
+    }
+  }
+})
+

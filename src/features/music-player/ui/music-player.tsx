@@ -2,7 +2,7 @@ import { Icon } from "@/shared/ui";
 
 export const MusicPlayer = () => {
   return (
-    <div className="hover:bg-slate-800 hidden cursor-pointer items-center rounded px-5 py-3 transition-colors lg:flex">
+    <div className="hidden cursor-pointer items-center rounded px-5 py-3 transition-colors hover:bg-slate-800 lg:flex">
       <button className="opacity-70 hover:opacity-100">
         <Icon name="player/prev" className="h-6 w-6" />
       </button>

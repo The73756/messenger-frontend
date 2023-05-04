@@ -10,22 +10,22 @@ export const FriendsHeader = () => {
       <div className="mb-2 flex gap-2">
         <Button>Все друзья 33</Button>
         <Button>Друзья онлайн</Button>
-        <Button className="ml-auto bg-main hover:bg-main-focus">Найти друзей</Button>
+        <Button className="bg-main hover:bg-main-focus ml-auto">Найти друзей</Button>
       </div>
-      <div className="border-slate-500 flex w-full items-center rounded border-[1px] border-solid">
+      <div className="flex items-center w-full rounded border-[1px] border-solid border-slate-500">
         <input
           type="text"
           placeholder="Поиск друзей"
-          className="flex-1 bg-transparent pl-2 text-base outline-none"
+          className="flex-1 text-base outline-none pl-2 bg-transparent"
         />
         <div className="dropdown-end dropdown">
-          <button tabIndex={0} className="flex h-8 items-center gap-1 px-2 hover:underline">
+          <button tabIndex={0} className="flex items-center gap-1 h-8 px-2 hover:underline">
             Параметры
-            <Icon name="figures/arrow" className="h-2 w-2 translate-y-0.5" />
+            <Icon name="figures/arrow" className="w-2 h-2 translate-y-0.5" />
           </button>
           <ParametersSearch />
         </div>
-        <button className="bg-gray-700 hover:bg-gray-600 flex h-8 w-14 items-center justify-center rounded transition-colors">
+        <button className="transition-colors flex h-8 w-14 rounded items-center justify-center bg-gray-700 hover:bg-gray-600">
           <Icon name="settings/search" className="h-5 w-5" />
         </button>
       </div>

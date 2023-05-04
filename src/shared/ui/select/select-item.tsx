@@ -7,21 +7,20 @@ interface SelectItemProps {
   handlerClose: () => void;
 }
 
-const SelectItem: FC<SelectItemProps> = ({ items, handlerClick, handlerClose }) => {
+const SelectItem: FC<SelectItemProps> = ({ isOpen, items, handlerClick, handlerClose }) => {
+
   useEffect(() => {
     document.addEventListener("click", handlerClose);
   }, []);
 
   return (
-    <div
-      onClick={(e: MouseEvent<HTMLDivElement>) => e.stopPropagation()}
-      className="custom-scrollbar border-slate-500 bg-slate-700 absolute left-0 right-0 z-50 max-h-36 translate-y-[-4px] overflow-y-auto rounded-sm border-[1px] border-solid">
+    <div onClick={(e: MouseEvent<HTMLDivElement>) => e.stopPropagation()} className="custom-scrollbar z-50 absolute left-0 right-0 max-h-36 translate-y-[-4px] overflow-y-auto rounded-sm border-[1px] border-solid border-slate-500 bg-slate-700">
       <ul>
         {items.map((item) => (
           <li
             key={item}
             onClick={() => handlerClick(item)}
-            className="hover:bg-slate-800 cursor-pointer p-1 text-sm">
+            className="cursor-pointer p-1 text-sm hover:bg-slate-800">
             {item}
           </li>
         ))}
