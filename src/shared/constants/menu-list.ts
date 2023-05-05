@@ -1,13 +1,13 @@
 import { SpriteKey } from "@/shared/api";
 import { routes } from "@/shared/constants/routes";
 
-interface IMenuItem {
+interface IMenuIitem {
   iconName: SpriteKey;
   path: string;
   value: string;
 }
 
-export const menuList: IMenuItem[] = [
+export const menuList: IMenuIitem[] = [
   {
     iconName: "settings/account",
     path: routes.ACCOUNT,

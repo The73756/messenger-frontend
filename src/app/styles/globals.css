@@ -11,23 +11,6 @@
     @apply text-sm opacity-80;
   }
 
-  .resizeHandler {
-    @apply relative rounded-full bg-base-content bg-transparent transition-colors hover:bg-neutral active:bg-neutral-focus;
-  }
-
-  .resizeHandler:after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 4px;
-    opacity: 1;
-    border-radius: 9999px;
-    height: 25px;
-    @apply bg-primary;
-  }
-
   /* Переопределение menu от daisyUi */
 
   .menu :where(li:not(.menu-title):not(:empty)) > :where(:not(ul).active),
