@@ -22,7 +22,7 @@ export const Resizer = ({
       maxWidth={maxWidth || 600}
       handleStyles={{
         right: {
-          right: -12,
+          right: 0,
           width: 8,
         },
         left: {

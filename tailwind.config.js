@@ -5,10 +5,10 @@ module.exports = {
     container: {
       center: true,
     },
-    colors: {
-      "main": "#4c91d4",
-      "main-focus": "#3382d1",
-    }
+    // colors: {
+      // "main": "#4c91d4",
+      // "main-focus": "#3382d1",
+    // }
   },
   plugins: [require("daisyui"), require("tailwind-scrollbar")({ nocompatible: true })],
 };
