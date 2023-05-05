@@ -1,9 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { registration } from "./actions";
+import { IUser } from "@/shared/constants";
+
+import { login, registration } from "./actions";
 
 interface UserState {
-  user: any;
+  user: IUser | null;
   isAuth: boolean;
   error: string;
 }
@@ -26,12 +28,20 @@ export const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(registration.fulfilled.type, (state, action: PayloadAction<any>) => {
+      .addCase(registration.fulfilled.type, (state, action: PayloadAction<IUser>) => {
         state.user = action.payload;
         state.isAuth = true;
         state.error = "";
       })
       .addCase(registration.rejected.type, (state, action: PayloadAction<string>) => {
+        state.error = action.payload;
+      })
+      .addCase(login.fulfilled.type, (state, action: PayloadAction<IUser>) => {
+        state.user = action.payload;
+        state.isAuth = true;
+        state.error = "";
+      })
+      .addCase(login.rejected.type, (state, action: PayloadAction<string>) => {
         state.error = action.payload;
       })
   }

@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-
 import { registration } from "@/entities/user";
 
 import { emailRule, nameRule, passwordRule } from "@/shared/helpers";
@@ -33,7 +32,6 @@ export const Form = () => {
 
   const onSubmit: SubmitHandler<IFormInputs> = (data) => {
     dispatch(registration(data));
-    // void router.push("/");
   };
 
   useEffect(() => {
@@ -43,16 +41,9 @@ export const Form = () => {
   return (
     <div className="flex flex-col items-center border-r-8 p-20">
       <h2 className="text-white text-center text-2xl">Регистрация</h2>
-      {error && <p className="text-error">{error}</p>}
+      {error && <p className="text-error text-sm">{error}</p>}
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-control w-full max-w-xl">
-          {/* <Input
-            register={register("name", nameRule)}
-            id="name"
-            label="Имя"
-            error={errors.name}
-            placeholder="Иван"
-          /> */}
           <Input
             register={register("email", emailRule)}
             id="email"

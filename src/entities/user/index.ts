@@ -1,1 +1,1 @@
-export { userSlice, registration } from "./model";
+export { userSlice, registration, login } from "./model";
