@@ -17,7 +17,7 @@ export const Resizer = ({
   return (
     <Resizable
       {...props}
-      defaultSize={defaultSize || { width: 400, height: "100%" }}
+      defaultSize={defaultSize || { width: 350, height: "100%" }}
       minWidth={minWidth || 200}
       maxWidth={maxWidth || 600}
       handleStyles={{
