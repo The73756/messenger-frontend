@@ -11,7 +11,7 @@ export const Icon = ({ name, className, viewBox, ...props }: IconProps) => {
 
   return (
     <svg
-      className={`inline-block select-none fill-current stroke-current text-inherit ${className}`}
+      className={`text-inherit inline-block select-none fill-current stroke-current ${className}`}
       viewBox={viewBox}
       focusable="false"
       aria-hidden

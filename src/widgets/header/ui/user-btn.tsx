@@ -1,6 +1,7 @@
 import { MenuList } from "@/features/menu-list";
 
 import { UserCard } from "@/entities/user-card";
+
 export const UserBtn = () => {
   return (
     <div className="dropdown-end dropdown sm:ml-2 lg:ml-auto">
@@ -13,5 +14,3 @@ export const UserBtn = () => {
     </div>
   );
 };
-
-export default UserBtn;

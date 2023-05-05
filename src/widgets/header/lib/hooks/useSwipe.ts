@@ -26,9 +26,19 @@ export const useSwipe = ({ swipeRight, swipeLeft, distanceLeft }: useSwipeProps)
   };
 
   const onTouchEnd = (e: SwipeTouchEvent) => {
-    if (swipeRight && direction === "right" && startX < maxLeft && e.changedTouches[0].pageX > startX + 15) {
+    if (
+      swipeRight &&
+      direction === "right" &&
+      startX < maxLeft &&
+      e.changedTouches[0].pageX > startX + 15
+    ) {
       swipeRight();
-    } else if (swipeLeft && direction === "left" && startX < maxLeft && e.changedTouches[0].pageX < startX + 15) {
+    } else if (
+      swipeLeft &&
+      direction === "left" &&
+      startX < maxLeft &&
+      e.changedTouches[0].pageX < startX + 15
+    ) {
       swipeLeft();
     }
   };

@@ -29,7 +29,7 @@ export const Form = () => {
 
   return (
     <div className="flex flex-col items-center border-r-8 p-20">
-      <h2 className="text-center text-2xl text-white">Вход</h2>
+      <h2 className="text-white text-center text-2xl">Вход</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-control w-full max-w-xl">
           <Input
