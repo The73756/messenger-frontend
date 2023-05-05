@@ -1,12 +1,12 @@
 "use client";
 
-import { PropsWithChildren } from "react";
-import "./styles/globals.css";
+import { FC, PropsWithChildren } from "react";
 import { Provider } from "react-redux";
+import "./styles/globals.css";
 
 import { appStore } from "./store";
 
-export const NextLayout = ({ children }: PropsWithChildren) => {
+export const NextLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <html lang="ru" data-theme="night">
       <Provider store={appStore}>
