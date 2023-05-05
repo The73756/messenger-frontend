@@ -14,9 +14,10 @@ export interface SpritesMap {
     | "sidebar"
     | "smile"
     | "video";
+  figures: "arrow";
   notification: "bell";
   player: "next" | "play" | "prev";
-  settings: "account" | "exit" | "friends" | "group" | "message" | "tools";
+  settings: "account" | "exit" | "friends" | "group" | "message" | "search" | "tools";
   social: "google" | "vkontakte";
 }
 
@@ -37,8 +38,9 @@ export const SPRITES_META: { [K in keyof SpritesMap]: SpritesMap[K][] } = {
     "smile",
     "video",
   ],
+  figures: ["arrow"],
   notification: ["bell"],
   player: ["next", "play", "prev"],
-  settings: ["account", "exit", "friends", "group", "message", "tools"],
+  settings: ["account", "exit", "friends", "group", "message", "search", "tools"],
   social: ["google", "vkontakte"],
 };
