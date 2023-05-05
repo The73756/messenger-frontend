@@ -1,1 +1,1 @@
-// template
+export { NextLayout } from "./next-layout";
