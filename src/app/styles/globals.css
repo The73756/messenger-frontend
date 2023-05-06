@@ -4,7 +4,7 @@
 
 @layer components {
   .custom-scrollbar {
-    @apply scrollbar scrollbar-thin scrollbar-thumb-neutral scrollbar-thumb-rounded-xl;
+    @apply scrollbar-thin scrollbar-thumb-neutral scrollbar-thumb-rounded-xl;
   }
 
   .chat-small {
