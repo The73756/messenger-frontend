@@ -1,4 +1,5 @@
 import { MainLayout } from "@/widgets/layouts";
+import { UserProfile } from "@/widgets/user-profile";
 
 import { asSyncComponent } from "@/shared/lib";
 
@@ -16,7 +17,7 @@ export const AccountPage = asSyncComponent(async () => {
 
   return (
     <MainLayout>
-      <div>HELLO</div>
+      <UserProfile />
     </MainLayout>
   );
 });

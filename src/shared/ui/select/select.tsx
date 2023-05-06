@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useState, MouseEvent } from "react";
+import { FC, MouseEvent, useState } from "react";
 
 import { Icon } from "@/shared/ui";
 
@@ -29,7 +29,7 @@ export const Select: FC<SelectProps> = ({ value, changeValue = null, items }) =>
 
   const openSelect = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    setIsShow(!isShow);
+    setIsShow((prev) => !prev);
   };
 
   return (
