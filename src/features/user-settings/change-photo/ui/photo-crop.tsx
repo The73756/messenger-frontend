@@ -38,8 +38,8 @@ export const PhotoCrop = ({ filePath, fileName }: PhotoCropProps) => {
   }, [croppedAreaPixels, rotation, flip]);
 
   return (
-    <div className="min-h-600 relative flex flex-col gap-4">
-      <div className="relative h-[400px]">
+    <div className="relative flex min-w-[500px] flex-col gap-4">
+      <div className="relative min-h-[400px]">
         <Cropper
           crop={crop}
           onCropChange={setCrop}

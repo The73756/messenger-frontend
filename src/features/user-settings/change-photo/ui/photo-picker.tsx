@@ -17,7 +17,7 @@ export const PhotoPicker = () => {
   };
 
   return (
-    <div className="mx-auto w-full ">
+    <div>
       {file && filePath ? (
         <PhotoCrop filePath={filePath.current} fileName={file.name} />
       ) : (
@@ -34,8 +34,7 @@ export const PhotoPicker = () => {
             <p className="text-2xl">Перетащите файл для загрузки</p>
             <p className="mb-2">или</p>
             <button className="btn text-lg normal-case">Выберите файл</button>
-
-            <p className="text-gray-600 mt-4 ">Рекомендуем изображение 150х150</p>
+            <p className="text-gray-600 mt-4 ">Рекомендуем изображение 160х160</p>
           </div>
         </FileUploader>
       )}

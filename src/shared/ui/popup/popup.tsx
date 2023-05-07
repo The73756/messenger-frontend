@@ -11,7 +11,7 @@ interface PopupProps {
 }
 
 const PopupContentClassNames = {
-  base: "bg-base opacity-0 transition-opacity rounded-lg w-full h-fit max-w-[600px]",
+  base: "bg-base opacity-0 transition-opacity rounded-lg",
   afterOpen: "opacity-100",
   beforeClose: "opacity-[0]",
 };
@@ -35,7 +35,7 @@ export const Popup = ({ children, isOpen, onClose, contentLabel }: PopupProps) =
       onRequestClose={onClose}
       closeTimeoutMS={150}
       contentLabel={contentLabel || "Модальное окно messenger"}>
-      <div className="modal-box mx-auto max-w-[600px] transform-none">{children}</div>
+      <div className="modal-box mx-auto w-auto max-w-none transform-none">{children}</div>
     </ReactPopup>
   );
 };
