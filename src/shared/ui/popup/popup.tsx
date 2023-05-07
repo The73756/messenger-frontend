@@ -1,3 +1,5 @@
+"use client";
+
 import { ReactNode } from "react";
 import ReactPopup from "react-modal";
 
@@ -9,11 +11,11 @@ interface PopupProps {
 }
 
 const PopupContentClassNames = {
-  base: "bg-base opacity-0 transition-opacity rounded-lg",
+  base: "bg-base opacity-0 transition-opacity rounded-lg w-full h-fit max-w-[600px]",
   afterOpen: "opacity-100",
   beforeClose: "opacity-[0]",
 };
-//
+
 const PopupOverlayClassNames = {
   base: "bg-neutral z-10 flex items-center justify-center fixed inset-0 bg-opacity-0 transition-opacity",
   afterOpen: "bg-opacity-40",
@@ -33,7 +35,7 @@ export const Popup = ({ children, isOpen, onClose, contentLabel }: PopupProps) =
       onRequestClose={onClose}
       closeTimeoutMS={150}
       contentLabel={contentLabel || "Модальное окно messenger"}>
-      <div className="modal-box w-full">{children}</div>
+      <div className="modal-box mx-auto max-w-[600px] transform-none">{children}</div>
     </ReactPopup>
   );
 };
