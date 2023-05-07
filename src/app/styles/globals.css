@@ -12,7 +12,7 @@
   }
 
   .resizeHandler {
-    @apply relative rounded-full bg-base-content bg-transparent transition-colors hover:bg-neutral active:bg-neutral-focus;
+    @apply relative rounded-full bg-base-content bg-transparent transition-colors hover:bg-item active:bg-item-focus;
   }
 
   .resizeHandler:after {
@@ -32,6 +32,6 @@
 
   .menu :where(li:not(.menu-title):not(:empty)) > :where(:not(ul).active),
   .menu :where(li:not(.menu-title):not(:empty)) > :where(*:not(ul):active) {
-    @apply bg-neutral-focus text-base-content;
+    @apply bg-item-focus text-base-content;
   }
 }

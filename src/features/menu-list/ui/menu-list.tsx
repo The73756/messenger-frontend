@@ -10,7 +10,7 @@ export const MenuList = () => {
         <li key={item.path} className="rounded-sm">
           <Link
             href={item.path}
-            className="flex items-center space-x-3 rounded-md p-2 transition-colors hover:bg-neutral-focus">
+            className="hover:bg-item-focus flex items-center space-x-3 rounded-md p-2 transition-colors">
             <Icon name={item.iconName} className="h-6 w-6" />
             <span>{item.value}</span>
           </Link>
