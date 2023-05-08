@@ -3,7 +3,7 @@ import Cropper, { Area } from "react-easy-crop";
 
 import { IconBtn } from "@/shared/ui";
 
-import getCroppedImg from "../lib/get-cropped-img";
+import { getCroppedImg } from "../lib";
 
 interface PhotoCropProps {
   filePath: string;

@@ -69,7 +69,7 @@ export const PhotoPicker = () => {
             <label htmlFor="fileInput" className="btn text-lg normal-case">
               Выберите файл
             </label>
-            <p className="text-gray-600 mt-4">Рекомендуем изображение 160х160</p>
+            <p className="text-gray-600 mt-4">Рекомендуем квадратное изображение</p>
           </div>
           <input
             id="fileInput"
