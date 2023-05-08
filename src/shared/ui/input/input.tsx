@@ -31,7 +31,7 @@ export const Input = ({
         className={`input-bordered input w-full ${className} ${error && "input-error"}`}
       />
       {error && (
-        <div className="label-xtext mt-1 w-full text-error">
+        <div className="label-text mt-1 w-full text-error">
           {error.message || "Это обязательное поле!"}
         </div>
       )}

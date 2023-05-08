@@ -11,11 +11,15 @@
     @apply text-sm opacity-80;
   }
 
-  .resizeHandler {
+  .resize-handler {
     @apply relative rounded-full bg-base-content bg-transparent transition-colors hover:bg-neutral active:bg-neutral-focus;
   }
 
-  .resizeHandler:after {
+  .input-info {
+    @apply cursor-pointer px-2 opacity-80;
+  }
+
+  .resize-handler:after {
     content: "";
     position: absolute;
     top: 50%;
