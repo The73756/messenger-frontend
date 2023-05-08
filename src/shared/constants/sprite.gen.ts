@@ -19,6 +19,7 @@ export interface SpritesMap {
   player: "next" | "play" | "prev";
   settings:
     | "account"
+    | "delete"
     | "exit"
     | "flip"
     | "friends"
@@ -54,6 +55,7 @@ export const SPRITES_META: { [K in keyof SpritesMap]: SpritesMap[K][] } = {
   player: ["next", "play", "prev"],
   settings: [
     "account",
+    "delete",
     "exit",
     "flip",
     "friends",

@@ -35,7 +35,7 @@ export const Popup = ({ children, isOpen, onClose, contentLabel }: PopupProps) =
       onRequestClose={onClose}
       closeTimeoutMS={150}
       contentLabel={contentLabel || "Модальное окно messenger"}>
-      <div className="modal-box mx-auto w-auto max-w-none transform-none">{children}</div>
+      <div className="modal-box relative mx-auto w-auto max-w-none transform-none">{children}</div>
     </ReactPopup>
   );
 };
