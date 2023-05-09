@@ -6,10 +6,13 @@ export interface InputProps extends AllHTMLAttributes<HTMLInputElement> {
   error?: FieldError;
   register: UseFormRegisterReturn<string>;
   wrapperClassName?: string;
+  labelClassName?: string;
+  id: string;
 }
 
 export const Input = ({
   wrapperClassName,
+  labelClassName,
   className,
   id,
   placeholder,
@@ -20,7 +23,7 @@ export const Input = ({
 }: InputProps) => {
   return (
     <div className={wrapperClassName}>
-      <label className="label" htmlFor={id}>
+      <label className={`label ${labelClassName}`} htmlFor={id}>
         <span className="label-text">{label}</span>
       </label>
       <input
