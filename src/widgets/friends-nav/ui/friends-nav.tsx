@@ -12,17 +12,17 @@ export const FriendsNav = () => {
     <div className="border-1 border-gray-500 h-fit max-h-[92vh] w-full max-w-xs rounded border p-1">
       <ul>
         <li>
-          <Link href="/" className="block w-full rounded p-2 text-sm hover:bg-gray-700">
+          <Link href="/" className="block w-full rounded p-2 text-sm hover:bg-item-focus">
             Мои друзья
           </Link>
         </li>
         <li>
-          <Link href="/" className="block w-full rounded p-2 text-sm hover:bg-gray-700">
+          <Link href="/" className="block w-full rounded p-2 text-sm hover:bg-item-focus">
             Заявки в друзья
           </Link>
         </li>
         <li>
-          <Link href="/" className="block w-full rounded p-2 text-sm hover:bg-gray-700">
+          <Link href="/" className="block w-full rounded p-2 text-sm hover:bg-item-focus">
             Поиск друзей
           </Link>
         </li>

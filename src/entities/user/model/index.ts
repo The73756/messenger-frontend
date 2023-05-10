@@ -1,2 +1,2 @@
 export { userSlice } from "./slice";
-export { registration, login } from "./actions";
+export { registration, login, checkAuth } from "./actions";

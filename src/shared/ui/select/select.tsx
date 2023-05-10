@@ -38,10 +38,10 @@ export const Select: FC<SelectProps> = ({ value, changeValue = null, items }) =>
         onClick={openSelect}
         className="border-slate-500 flex w-full items-center justify-between gap-2 whitespace-nowrap rounded border-[1px] border-solid p-1 text-sm">
         {value}
-        {/* <Icon
+        <Icon
           name="figures/arrow"
           className={"h-2 w-2" + (isShow ? " rotate-180" : " translate-y-0.5")}
-        /> */}
+        />
       </button>
       {isShow && (
         <SelectItem

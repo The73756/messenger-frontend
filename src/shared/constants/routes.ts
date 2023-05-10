@@ -1,4 +1,5 @@
 export enum routes {
+  LOGIN = "/login",
   HOME = "/home",
   ACCOUNT = "/account",
   NEW_GROUP = "/new-group",

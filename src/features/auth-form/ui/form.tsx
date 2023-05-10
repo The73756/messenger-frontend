@@ -7,6 +7,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 
 import { registration } from "@/entities/user";
 
+import { routes } from "@/shared/constants";
 import { emailRule, nameRule, passwordRule } from "@/shared/helpers";
 import { useAppDispatch, useAppSelector } from "@/shared/model";
 import { IconBtn, Input } from "@/shared/ui";
@@ -27,7 +28,7 @@ export const Form = () => {
   } = useForm<IFormInputs>({
     mode: "onBlur",
   });
-  const { isAuth, error } = useAppSelector(state => state.user);
+  const { isReg, error } = useAppSelector(state => state.user);
   const dispatch = useAppDispatch();
 
   const onSubmit: SubmitHandler<IFormInputs> = (data) => {
@@ -35,8 +36,8 @@ export const Form = () => {
   };
 
   useEffect(() => {
-    if (isAuth) router.push("/");
-  }, [isAuth]);
+    if (isReg) router.push(routes.LOGIN);
+  }, [isReg]);
 
   return (
     <div className="flex flex-col items-center border-r-8 p-20">
