@@ -4,18 +4,26 @@
 
 @layer components {
   .custom-scrollbar {
-    @apply scrollbar scrollbar-thin scrollbar-thumb-neutral scrollbar-thumb-rounded-xl;
+    @apply scrollbar-thin scrollbar-thumb-neutral scrollbar-thumb-rounded-xl;
   }
 
   .chat-small {
     @apply text-sm opacity-80;
   }
 
-  .resizeHandler {
+  .resize-handler {
     @apply relative rounded-full bg-base-content bg-transparent transition-colors hover:bg-neutral active:bg-neutral-focus;
   }
 
-  .resizeHandler:after {
+  .input-info {
+    @apply cursor-pointer px-2 opacity-80;
+  }
+
+  .label-error {
+    @apply text-error;
+  }
+
+  .resize-handler:after {
     content: "";
     position: absolute;
     top: 50%;

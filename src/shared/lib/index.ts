@@ -1,0 +1,1 @@
+export { asSyncComponent } from "./hocs";

@@ -1,21 +1,25 @@
 "use client";
 
-import { FC, useState, MouseEvent } from "react";
+import { MouseEvent, useState } from "react";
 
 import { Icon } from "@/shared/ui";
 
 import SelectItem from "./select-item";
 
-interface SelectProps {
-  value: string | number;
-  changeValue: (val: any) => void;
-  items: string[] | number[];
+interface SelectProps<T> {
+  value: T;
+  changeValue: (val: T) => void;
+  items: T[];
 }
 
-export const Select: FC<SelectProps> = ({ value, changeValue = null, items }) => {
+export const Select = <T extends string | number>({
+  value,
+  changeValue,
+  items,
+}: SelectProps<T>) => {
   const [isShow, setIsShow] = useState(false);
 
-  const handlerClick = (value: string | number) => {
+  const handlerClick = (value: T) => {
     if (changeValue) {
       changeValue(value);
       setIsShow(false);
@@ -29,7 +33,7 @@ export const Select: FC<SelectProps> = ({ value, changeValue = null, items }) =>
 
   const openSelect = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    setIsShow(!isShow);
+    setIsShow((prev) => !prev);
   };
 
   return (
