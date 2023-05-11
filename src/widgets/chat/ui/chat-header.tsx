@@ -3,7 +3,7 @@ import { Icon } from "@/shared/ui";
 export const ChatHeader = () => {
   return (
     <div>
-      <div className="navbar bg-base-100 px-0">
+      <div className="navbar px-0">
         <div className="flex flex-1 items-center gap-4">
           <div>
             <h2 className="text-xl font-medium">Название чата</h2>

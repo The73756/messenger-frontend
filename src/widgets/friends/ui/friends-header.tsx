@@ -25,7 +25,7 @@ export const FriendsHeader = () => {
           </button>
           <ParametersSearch />
         </div>
-        <button className="bg-gray-700 hover:bg-gray-600 flex h-8 w-14 items-center justify-center rounded transition-colors">
+        <button className="bg-neutral hover:bg-neutral-focus flex h-8 w-14 items-center justify-center rounded transition-colors">
           <Icon name="settings/search" className="h-5 w-5" />
         </button>
       </div>

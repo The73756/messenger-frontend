@@ -6,7 +6,7 @@ import { Icon, Resizer } from "@/shared/ui";
 export const ChatInfo = () => {
   return (
     <Resizer enable={{ left: true }} minWidth={300}>
-      <div className="custom-scrollbar max-h-[92vh] w-full overflow-auto px-2">
+      <div className="custom-scrollbar max-h-[92vh] w-full overflow-auto rounded bg-item p-2">
         <div className="flex flex-1 items-center gap-4">
           <div className="avatar">
             <div className="w-14 rounded-full">
@@ -33,31 +33,31 @@ export const ChatInfo = () => {
 
           <ul className="flex flex-col gap-1">
             <li>
-              <button className="btn w-full justify-start gap-4 lowercase">
+              <button className="btn w-full justify-start gap-4 lowercase border-none bg-neutral hover:bg-item-focus">
                 <Icon name="chat/image" className="h-5 w-5" />
                 <span>1 картинка</span>
               </button>
             </li>
             <li>
-              <button className="btn w-full justify-start gap-4 lowercase">
+              <button className="btn w-full justify-start gap-4 lowercase border-none bg-neutral hover:bg-item-focus">
                 <Icon name="chat/video" className="h-5 w-5" />
                 <span>1 видео</span>
               </button>
             </li>
             <li>
-              <button className="btn w-full justify-start gap-4 lowercase">
+              <button className="btn w-full justify-start gap-4 lowercase border-none bg-neutral hover:bg-item-focus">
                 <Icon name="chat/file" className="h-5 w-5" />
                 <span>1 файл</span>
               </button>
             </li>
             <li>
-              <button className="btn w-full justify-start gap-4 lowercase">
+              <button className="btn w-full justify-start gap-4 lowercase border-none bg-neutral hover:bg-item-focus">
                 <Icon name="chat/music" className="h-5 w-5" />
                 <span>1 аудиофайл</span>
               </button>
             </li>
             <li>
-              <button className="btn w-full justify-start gap-4 lowercase">
+              <button className="btn w-full justify-start gap-4 lowercase border-none bg-neutral hover:bg-item-focus">
                 <Icon name="chat/micro" className="h-5 w-5" />
                 <span>1 голосовое сообщение</span>
               </button>

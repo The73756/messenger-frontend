@@ -8,7 +8,7 @@ import { appStore } from "./store";
 
 export const NextLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
-    <html lang="ru" data-theme="night">
+    <html lang="ru" data-theme="mytheme">
       <Provider store={appStore}>
         <body>{children}</body>
       </Provider>

@@ -27,13 +27,13 @@ export const Header = () => {
   }, []);
 
   return (
-    <div {...handlersSwipe} className="navbar bottom-0 z-10 mx-auto">
+    <div {...handlersSwipe} className="navbar bottom-0 z-10 mx-auto mb-3 bg-item">
       <button
         onClick={() => setIsShowBurger(true)}
         className="flex flex-col items-start space-y-2 lg:hidden">
-        <div className="bg-gray-600 h-0.5 w-8"></div>
-        <div className="bg-gray-600 h-0.5 w-8"></div>
-        <div className="bg-gray-600 h-0.5 w-6"></div>
+        <div className="h-0.5 w-8 bg-gray-600"></div>
+        <div className="h-0.5 w-8 bg-gray-600"></div>
+        <div className="h-0.5 w-6 bg-gray-600"></div>
       </button>
       <Portal>
         <div
@@ -45,7 +45,9 @@ export const Header = () => {
           }></div>
         <Burger close={() => setIsShowBurger(false)} isShow={isShowBurger} />
       </Portal>
-      <Link href="#" className="btn-ghost btn ml-auto text-xl normal-case lg:ml-0 lg:mr-10">
+      <Link
+        href="#"
+        className="hover:bg-item-focus btn-ghost btn ml-auto text-xl normal-case lg:ml-0 lg:mr-10">
         Logo
       </Link>
       <div className="hidden flex-1 items-center lg:flex">

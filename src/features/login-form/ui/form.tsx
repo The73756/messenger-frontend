@@ -2,9 +2,13 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
+import { login, checkAuth } from "@/entities/user";
+
 import { emailRule, passwordRule } from "@/shared/helpers";
+import { useAppDispatch, useAppSelector } from "@/shared/model";
 import { IconBtn, Input } from "@/shared/ui";
 
 interface IFormInputs {
@@ -21,15 +25,25 @@ export const Form = () => {
   } = useForm<IFormInputs>({
     mode: "onBlur",
   });
+  const { isAuth, error } = useAppSelector(state => state.user);
+  const dispatch = useAppDispatch();
 
   const onSubmit: SubmitHandler<IFormInputs> = (data) => {
-    console.log(data);
-    void router.push("/");
+    dispatch(login(data));
   };
+
+  // useEffect(() => {
+    // if (isAuth) router.push("/");
+  // }, [isAuth]);
+
+  useEffect(() => {
+    dispatch(checkAuth());
+  }, []);
 
   return (
     <div className="flex flex-col items-center border-r-8 p-20">
       <h2 className="text-white text-center text-2xl">Вход</h2>
+      {error && <p className="text-error">{error}</p>}
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-control w-full max-w-xl">
           <Input

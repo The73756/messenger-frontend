@@ -26,7 +26,7 @@ export const Burger: React.FC<BurgerProps> = ({ isShow, close }) => {
         ref={burgerRef}
         onClick={(e) => e.stopPropagation()}
         className="burger fixed bottom-0 left-0 top-0 z-20 flex">
-        <div className="flex h-full w-72 flex-col overflow-y-auto bg-neutral p-3 shadow">
+        <div className="flex h-full w-72 flex-col overflow-y-auto bg-item p-3 shadow">
           <div className="space-y-3">
             <UserCard />
             <MenuList />
