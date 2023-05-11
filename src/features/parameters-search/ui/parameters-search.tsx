@@ -6,7 +6,7 @@ import { Radio } from "@/shared/ui/radio";
 import { cities } from "../consts";
 
 export const ParametersSearch = () => {
-  const [city, setCity] = useState<string>("");
+  const [city, setCity] = useState("");
   const [minAge, setMinAge] = useState(14);
   const [maxAge, setMaxAge] = useState(80);
 

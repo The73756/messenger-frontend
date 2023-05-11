@@ -17,7 +17,7 @@
 - [Pauchoook](https://github.com/Pauchoook)
 ---
 ### Backend
-[messenger-backend](https://github.com/mogilevtsevdmitry) 
+[messenger-backend](https://github.com/mogilevtsevdmitry/messenger-backend) 
 
 - [Dmitry Mogilevtsev](https://github.com/mogilevtsevdmitry)
 

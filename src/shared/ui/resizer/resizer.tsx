@@ -31,8 +31,8 @@ export const Resizer = ({
         },
       }}
       handleClasses={{
-        right: "resizeHandler",
-        left: "resizeHandler",
+        right: "resize-handler",
+        left: "resize-handler",
       }}>
       {children}
       <div className=""></div>
