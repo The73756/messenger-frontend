@@ -2,12 +2,12 @@ import { ChangePhoto, ChangeUserInfo } from "@/features/user-settings";
 
 export const UserProfile = () => {
   return (
-    <div className="px-2">
-      <div className="max-w-md">
+    <div className="flex w-full gap-2 px-2">
+      <div className="w-full max-w-md">
         <ChangePhoto />
-      </div>
 
-      <ChangeUserInfo />
+        <ChangeUserInfo />
+      </div>
     </div>
   );
 };
