@@ -13,7 +13,7 @@ export const Button: FC<ButtonProps> = ({
   return (
     <button
       type={type}
-      className={`btn h-auto min-h-0 py-1 text-sm normal-case ${className}`}
+      className={`btn h-auto min-h-0 py-1 text-sm normal-case w-full bg-[#4D658C] ${className}`}
       {...props}>
       {children}
     </button>

@@ -9,7 +9,7 @@ import { login, checkAuth } from "@/entities/user";
 
 import { emailRule, passwordRule } from "@/shared/helpers";
 import { useAppDispatch, useAppSelector } from "@/shared/model";
-import { IconBtn, Input } from "@/shared/ui";
+import { Button, IconBtn, Input } from "@/shared/ui";
 
 interface IFormInputs {
   email: string;
@@ -33,7 +33,7 @@ export const Form = () => {
   };
 
   // useEffect(() => {
-    // if (isAuth) router.push("/");
+  // if (isAuth) router.push("/");
   // }, [isAuth]);
 
   useEffect(() => {
@@ -42,9 +42,10 @@ export const Form = () => {
 
   return (
     <div className="flex flex-col items-center border-r-8 p-20">
-      <h2 className="text-white text-center text-2xl">Вход</h2>
+      <div className="w-32 h-32 bg-white rounded-full mb-8"></div>
+      <h2 className="text-white text-center text-4xl mb-5">Войти</h2>
       {error && <p className="text-error">{error}</p>}
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className="w-80">
         <div className="form-control w-full max-w-xl">
           <Input
             register={register("email", emailRule)}
@@ -62,11 +63,15 @@ export const Form = () => {
             placeholder="Введите пароль"
           />
         </div>
-        <div className="mt-4 flex items-center gap-4">
-          <button className="btn" type="submit">
-            Войти
-          </button>
-          <Link href="/auth">Нет аккаунта? Зарегистрируйтесь</Link>
+        <div className="mt-4">
+          <Button className="py-3 text-base" type="submit">Войти</Button>
+          <div className="flex justify-center mt-5">
+            <Link href="/auth">
+              <p className="text-center text-xs">
+                Нет аккаунта? Зарегистрируйтесь
+              </p>
+            </Link>
+          </div>
         </div>
 
         <div className="mt-4 flex justify-center gap-2">

@@ -10,7 +10,7 @@ import { registration } from "@/entities/user";
 import { routes } from "@/shared/constants";
 import { emailRule, nameRule, passwordRule } from "@/shared/helpers";
 import { useAppDispatch, useAppSelector } from "@/shared/model";
-import { IconBtn, Input } from "@/shared/ui";
+import { Button, IconBtn, Input } from "@/shared/ui";
 
 interface IFormInputs {
   name: string;
@@ -41,9 +41,10 @@ export const Form = () => {
 
   return (
     <div className="flex flex-col items-center border-r-8 p-20">
-      <h2 className="text-white text-center text-2xl">Регистрация</h2>
+      <div className="w-32 h-32 bg-white rounded-full mb-8"></div>
+      <h2 className="text-white text-center text-4xl mb-5">Регистрация</h2>
       {error && <p className="text-error text-sm">{error}</p>}
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className="w-80">
         <div className="form-control w-full max-w-xl">
           <Input
             register={register("email", emailRule)}
@@ -53,12 +54,19 @@ export const Form = () => {
             placeholder="user@gmail.com"
           />
           <Input
+            register={register("name", nameRule)}
+            id="name"
+            label="Никнейм"
+            error={errors.name}
+            placeholder="Никнейм" 
+          />
+          <Input
             register={register("password", passwordRule)}
             type="password"
             id="password"
             label="Пароль"
             error={errors.password}
-            placeholder="Введите пароль"
+            placeholder="Введите пароль" 
           />
           <Input
             register={register("confirmPassword", passwordRule)}
@@ -69,16 +77,20 @@ export const Form = () => {
             placeholder="Повторите пароль"
           />
         </div>
-        <div className="mt-4 flex items-center gap-4">
-          <button className="btn" type="submit">
-            Зарегистрироваться
-          </button>
-          <Link href="/login">Есть аккаунт? Войти</Link>
+        <div className="mt-4">
+          <Button className="py-3 text-base" type="submit">Зарегистрироваться</Button>
+          <div className="flex justify-center mt-5">
+            <Link href="/login">
+              <p className="text-center text-xs">
+                Есть аккаунт? Войти
+              </p>
+            </Link>
+          </div>
         </div>
 
-        <div className="mt-4 flex justify-center gap-2">
-          <IconBtn name="social/google" />
-          <IconBtn name="social/vkontakte" />
+        <div className="mt-6 flex justify-center gap-2">
+          <IconBtn name="social/google"/>
+          <IconBtn name="social/vkontakte"/>
         </div>
       </form>
     </div>

@@ -17,7 +17,7 @@ export const IconBtn = ({
   return (
     <button
       type={type}
-      className={`no-animation btn flex h-12 w-12 items-center justify-center rounded-full p-0  ${className}`}
+      className={`no-animation btn flex h-12 w-12 items-center justify-center rounded-full p-0 bg-[#4D658C] ${className}`}
       {...props}>
       <Icon name={name} className={`h-5 w-5 ${iconClassName}`} />
     </button>
