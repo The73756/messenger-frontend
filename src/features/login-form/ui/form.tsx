@@ -41,11 +41,13 @@ export const Form = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center border-r-8 p-20">
-      <div className="w-32 h-32 bg-white rounded-full mb-8"></div>
-      <h2 className="text-white text-center text-4xl mb-5">Войти</h2>
+    <div className="flex flex-col items-center p-20">
+      <div>
+        <div style={{ width: "120px", height: "120px" }} className="bg-white rounded-full mb-8"></div>
+      </div>
+      <h2 className="text-white text-center text-4xl mb-5 font-semibold">Войти</h2>
       {error && <p className="text-error">{error}</p>}
-      <form onSubmit={handleSubmit(onSubmit)} className="w-80">
+      <form onSubmit={handleSubmit(onSubmit)} style={{ width: "350px" }}>
         <div className="form-control w-full max-w-xl">
           <Input
             register={register("email", emailRule)}
@@ -64,10 +66,10 @@ export const Form = () => {
           />
         </div>
         <div className="mt-4">
-          <Button className="py-3 text-base" type="submit">Войти</Button>
+          <Button className="py-3 text-base min-w-full" type="submit">Войти</Button>
           <div className="flex justify-center mt-5">
             <Link href="/auth">
-              <p className="text-center text-xs">
+              <p className="text-center text-xs font-medium">
                 Нет аккаунта? Зарегистрируйтесь
               </p>
             </Link>

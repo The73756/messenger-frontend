@@ -24,14 +24,14 @@ export const Input = ({
   return (
     <div className={wrapperClassName}>
       <label className={`label ${labelClassName}`} htmlFor={id}>
-        <span className="label-text">{label}</span>
+        <span className="label-text text-[#fff] font-medium text-xs">{label}</span>
       </label>
       <input
         {...register}
         {...props}
         id={id}
         placeholder={placeholder}
-        className={`input-bordered input w-full ${className} ${error && "input-error"}`}
+        className={`input-bordered mb-2 border-[#4D658C] input min-w-full text-[#fff] placeholder-white placeholder: font-normal placeholder: text-xs ${className} ${error && "input-error"}`}
       />
       {error && (
         <div className="label-text mt-1 w-full text-error">
