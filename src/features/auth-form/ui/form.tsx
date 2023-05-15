@@ -42,11 +42,11 @@ export const Form = () => {
   return (
     <div className="flex flex-col items-center p-20 h-screen">
       <div>
-        <div style={{ width: "120px", height: "120px" }} className="bg-white rounded-full mb-8"></div>
+        <div className="w-[120px] h-[120px] bg-white rounded-full mb-8"></div>
       </div>
       <h2 className="text-white text-center text-4xl mb-5 font-semibold">Регистрация</h2>
       {error && <p className="text-error text-sm">{error}</p>}
-      <form onSubmit={handleSubmit(onSubmit)} style={{ width: "350px" }}>
+      <form onSubmit={handleSubmit(onSubmit)} className="w-[350px]">
         <div className="form-control w-full max-w-xl">
           <Input
             register={register("email", emailRule)}
