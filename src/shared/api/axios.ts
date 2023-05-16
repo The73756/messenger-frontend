@@ -1,13 +1,14 @@
-import axios, { InternalAxiosRequestConfig } from "axios";
+import axios from "axios";
 
-const accessToken = typeof window !== "undefined" && JSON.stringify(localStorage.getItem("accessToken") || "")
+const accessToken =
+  typeof window !== "undefined" && JSON.stringify(localStorage.getItem("accessToken") || "");
 
 const apiClient = axios.create({
   baseURL: "/api",
   withCredentials: true,
   headers: {
-    Authorization: accessToken
-  }
+    Authorization: accessToken,
+  },
 });
 
 let isRefreshing = false;
@@ -50,7 +51,7 @@ apiClient.interceptors.response.use(
         apiClient
           .post("/auth/refresh-tokens", {
             accessToken: JSON.parse(localToken)?.split(" ")[1],
-          },)
+          })
           .then(({ data }) => {
             localStorage.setItem("accessToken", data.accessToken);
             apiClient.defaults.headers.common["Authorization"] = data.accessToken;

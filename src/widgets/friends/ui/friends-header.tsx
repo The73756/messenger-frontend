@@ -12,7 +12,7 @@ export const FriendsHeader = () => {
         <Button>Друзья онлайн</Button>
         <Button className="ml-auto bg-main hover:bg-main-focus">Найти друзей</Button>
       </div>
-      <div className="border-slate-500 flex w-full items-center rounded border-[1px] border-solid">
+      <div className="flex w-full items-center rounded border-[1px] border-solid border-slate-500">
         <input
           type="text"
           placeholder="Поиск друзей"
@@ -25,7 +25,7 @@ export const FriendsHeader = () => {
           </button>
           <ParametersSearch />
         </div>
-        <button className="bg-neutral hover:bg-neutral-focus flex h-8 w-14 items-center justify-center rounded transition-colors">
+        <button className="flex h-8 w-14 items-center justify-center rounded bg-neutral transition-colors hover:bg-neutral-focus">
           <Icon name="settings/search" className="h-5 w-5" />
         </button>
       </div>

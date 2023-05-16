@@ -40,7 +40,7 @@ export const Select = <T extends string | number>({
     <div className="relative">
       <button
         onClick={openSelect}
-        className="border-slate-500 flex w-full items-center justify-between gap-2 whitespace-nowrap rounded border-[1px] border-solid p-1 text-sm">
+        className="flex w-full items-center justify-between gap-2 whitespace-nowrap rounded border-[1px] border-solid border-slate-500 p-1 text-sm">
         {value}
         <Icon
           name="figures/arrow"

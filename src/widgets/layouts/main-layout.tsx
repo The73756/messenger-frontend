@@ -1,8 +1,8 @@
-import { FC, PropsWithChildren } from "react";
+import { PropsWithChildren } from "react";
 
 import { Header } from "@/widgets/header";
 
-export const MainLayout: FC<PropsWithChildren> = ({ children }) => {
+export const MainLayout = ({ children }: PropsWithChildren) => {
   return (
     <div className="container">
       <Header />

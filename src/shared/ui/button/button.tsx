@@ -1,15 +1,10 @@
-import { ButtonHTMLAttributes, FC, ReactNode } from "react";
+import { ButtonHTMLAttributes, ReactNode } from "react";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
 }
 
-export const Button: FC<ButtonProps> = ({
-  className = "",
-  type = "button",
-  children,
-  ...props
-}) => {
+export const Button = ({ className = "", type = "button", children, ...props }: ButtonProps) => {
   return (
     <button
       type={type}

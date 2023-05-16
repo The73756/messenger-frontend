@@ -51,6 +51,6 @@ export const userSlice = createSlice({
       })
       .addCase(checkAuth.rejected.type, (state, action: PayloadAction<string>) => {
         state.error = action.payload;
-      })
-  }
+      });
+  },
 });
