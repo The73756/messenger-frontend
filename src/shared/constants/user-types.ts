@@ -10,6 +10,8 @@ export interface IUser {
   photo: string[];
   sex: string;
   status: string;
+  rules: string[];
+  createdAt: string;
 }
 
 export interface ICreateUser {
