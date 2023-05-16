@@ -4,7 +4,7 @@
 
 - Next.js 13 (appDir)
 - Tailwind
-- DaisyUI 
+- DaisyUI
 - Redux Toolkit
 - Feature-Sliced Design
 - ...
@@ -15,10 +15,12 @@
 
 - [The73756](https://github.com/The73756)
 - [Pauchoook](https://github.com/Pauchoook)
+
 ---
+
 ### Backend
-[messenger-backend](https://github.com/mogilevtsevdmitry/messenger-backend) 
+
+[messenger-backend](https://github.com/mogilevtsevdmitry/messenger-backend)
 
 - [Dmitry Mogilevtsev](https://github.com/mogilevtsevdmitry)
-
-
+- [impuLssse](https://github.com/impuLssse)
