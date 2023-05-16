@@ -4,5 +4,7 @@
   "trailingComma": "all",
   "semi": true,
   "bracketSameLine": true,
-  "printWidth": 100
+  "printWidth": 100,
+  "quoteProps": "consistent",
+  "endOfLine": "auto"
 }
