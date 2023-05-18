@@ -1,18 +1,21 @@
-import axios from "axios";
+import { Api } from "@/shared/api/api-generated";
 
 const accessToken =
   typeof window !== "undefined" && JSON.stringify(localStorage.getItem("accessToken") || "");
 
-const apiClient = axios.create({
-  baseURL: "/api",
+let isRefreshing = false;
+let failedQueue: any[] = [];
+
+const httpClient = new Api({
+  baseURL: "/",
   withCredentials: true,
   headers: {
     Authorization: accessToken,
   },
 });
 
-let isRefreshing = false;
-let failedQueue: any[] = [];
+const httpClientInstance = httpClient.instance;
+const apiClient = httpClient.api;
 
 const processQueue = (error: any, token = null) => {
   failedQueue.forEach((prom) => {
@@ -26,7 +29,7 @@ const processQueue = (error: any, token = null) => {
   failedQueue = [];
 };
 
-apiClient.interceptors.response.use(
+httpClientInstance.interceptors.response.use(
   (response) => response,
   (error) => {
     const originalRequest = error.config;
@@ -38,7 +41,7 @@ apiClient.interceptors.response.use(
         })
           .then((token) => {
             originalRequest.headers["Authorization"] = token;
-            return apiClient(originalRequest);
+            return httpClientInstance(originalRequest);
           })
           .catch((err) => Promise.reject(err));
       }
@@ -48,16 +51,16 @@ apiClient.interceptors.response.use(
 
       return new Promise((resolve, reject) => {
         const localToken = localStorage.getItem("accessToken") || "";
-        apiClient
-          .post("/auth/refresh-tokens", {
+        httpClientInstance
+          .post("/api/auth/refresh-tokens", {
             accessToken: JSON.parse(localToken)?.split(" ")[1],
           })
           .then(({ data }) => {
             localStorage.setItem("accessToken", data.accessToken);
-            apiClient.defaults.headers.common["Authorization"] = data.accessToken;
+            httpClientInstance.defaults.headers.common["Authorization"] = data.accessToken;
             originalRequest.headers["Authorization"] = data.accessToken;
             processQueue(null, data.accessToken);
-            resolve(apiClient(originalRequest));
+            resolve(httpClientInstance(originalRequest));
           })
           .catch((err) => {
             processQueue(err, null);
@@ -73,4 +76,4 @@ apiClient.interceptors.response.use(
   },
 );
 
-export { apiClient };
+export { apiClient, httpClient };

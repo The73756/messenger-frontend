@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { IUser } from "@/shared/constants";
+import { UserResponse } from "@/shared/api";
 
-import { login, registration, checkAuth } from "./actions";
+import { checkAuth, login, registration } from "./actions";
 
 interface UserState {
-  user: IUser | null;
+  user: UserResponse | null;
   isAuth: boolean;
   isReg: boolean;
   error: string;
@@ -36,7 +36,7 @@ export const userSlice = createSlice({
       .addCase(registration.rejected.type, (state, action: PayloadAction<string>) => {
         state.error = action.payload;
       })
-      .addCase(login.fulfilled.type, (state, action: PayloadAction<IUser>) => {
+      .addCase(login.fulfilled.type, (state, action: PayloadAction<UserResponse>) => {
         state.user = action.payload;
         state.isAuth = true;
         state.error = "";
@@ -44,7 +44,7 @@ export const userSlice = createSlice({
       .addCase(login.rejected.type, (state, action: PayloadAction<string>) => {
         state.error = action.payload;
       })
-      .addCase(checkAuth.fulfilled.type, (state, action: PayloadAction<IUser>) => {
+      .addCase(checkAuth.fulfilled.type, (state, action: PayloadAction<UserResponse>) => {
         state.user = action.payload;
         state.isAuth = true;
         state.error = "";

@@ -1,6 +1,6 @@
 import { SVGProps } from "react";
 
-import { SpriteKey } from "@/shared/api";
+import { SpriteKey } from "@/shared/lib";
 
 export interface IconProps extends Omit<SVGProps<SVGSVGElement>, "name" | "type"> {
   name: SpriteKey;
