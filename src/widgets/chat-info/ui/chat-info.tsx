@@ -33,31 +33,31 @@ export const ChatInfo = () => {
 
           <ul className="flex flex-col gap-1">
             <li>
-              <button className="btn w-full justify-start gap-4 lowercase border-none bg-neutral hover:bg-item-focus">
+              <button className="btn w-full justify-start gap-4 border-none bg-neutral lowercase hover:bg-item-focus">
                 <Icon name="chat/image" className="h-5 w-5" />
                 <span>1 картинка</span>
               </button>
             </li>
             <li>
-              <button className="btn w-full justify-start gap-4 lowercase border-none bg-neutral hover:bg-item-focus">
+              <button className="btn w-full justify-start gap-4 border-none bg-neutral lowercase hover:bg-item-focus">
                 <Icon name="chat/video" className="h-5 w-5" />
                 <span>1 видео</span>
               </button>
             </li>
             <li>
-              <button className="btn w-full justify-start gap-4 lowercase border-none bg-neutral hover:bg-item-focus">
+              <button className="btn w-full justify-start gap-4 border-none bg-neutral lowercase hover:bg-item-focus">
                 <Icon name="chat/file" className="h-5 w-5" />
                 <span>1 файл</span>
               </button>
             </li>
             <li>
-              <button className="btn w-full justify-start gap-4 lowercase border-none bg-neutral hover:bg-item-focus">
+              <button className="btn w-full justify-start gap-4 border-none bg-neutral lowercase hover:bg-item-focus">
                 <Icon name="chat/music" className="h-5 w-5" />
                 <span>1 аудиофайл</span>
               </button>
             </li>
             <li>
-              <button className="btn w-full justify-start gap-4 lowercase border-none bg-neutral hover:bg-item-focus">
+              <button className="btn w-full justify-start gap-4 border-none bg-neutral lowercase hover:bg-item-focus">
                 <Icon name="chat/micro" className="h-5 w-5" />
                 <span>1 голосовое сообщение</span>
               </button>

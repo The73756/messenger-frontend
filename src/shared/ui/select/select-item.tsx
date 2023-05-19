@@ -17,13 +17,13 @@ const SelectItem = <T extends string | number>({
   }, []);
 
   return (
-    <div className="custom-scrollbar border-slate-500 bg-neutral absolute left-0 right-0 z-50 max-h-36 translate-y-[-4px] overflow-y-auto rounded-sm border-[1px] border-solid">
+    <div className="custom-scrollbar absolute left-0 right-0 z-50 max-h-36 translate-y-[-4px] overflow-y-auto rounded-sm border-[1px] border-solid border-slate-500 bg-neutral">
       <ul>
         {items.map((item) => (
           <li
             key={item}
             onClick={() => handlerClick(item)}
-            className="hover:bg-neutral-focus cursor-pointer p-1 text-sm">
+            className="cursor-pointer p-1 text-sm hover:bg-neutral-focus">
             {item}
           </li>
         ))}

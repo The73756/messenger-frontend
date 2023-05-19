@@ -8,6 +8,7 @@
     "plugin:react-hooks/recommended",
     "next/core-web-vitals"
   ],
+  "plugins": ["prettier"],
   "parser": "@typescript-eslint/parser",
   "ignorePatterns": ["*/**.svg"],
   "settings": {
@@ -24,10 +25,11 @@
     "boundaries/ignore": ["**/*.test.*"]
   },
   "rules": {
+    "prettier/prettier": "error",
     "quotes": ["warn", "double"],
-    "object-curly-spacing": ["warn", "always"],
+    "object-curly-spacing": ["error", "always"],
     "react/function-component-definition": [
-      "warn",
+      "error",
       {
         "namedComponents": "arrow-function",
         "unnamedComponents": "arrow-function"

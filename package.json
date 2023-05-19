@@ -7,12 +7,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "svg": "npx @neodx/svg --group --root src/assets -o public/sprite -d src/shared/constants/sprite.gen.ts",
+    "svg": "npx @neodx/svg --group --root src/assets -o public/sprite -d src/shared/lib/sprite/sprite.gen.ts",
+    "api": "swagger-typescript-api -p http://95.163.240.197/api-doc-json -o ./src/shared/api --axios --name api-generated.ts",
     "prepare": "husky install"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "eslint --fix"
+      "eslint --fix",
+      "eslint"
     ],
     "*.{css,scss,html,json}": [
       "prettier --write"
@@ -44,17 +46,20 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
+    "@neodx/svg": "^0.1.7",
     "@types/react-transition-group": "^4.4.5",
     "dependency-cruiser": "^12.11.1",
-    "eslint": "^8.39.0",
+    "eslint": "^8.40.0",
     "eslint-plugin-boundaries": "^3.1.1",
     "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "husky": "^8.0.0",
     "lint-staged": "^13.2.1",
-    "prettier": "^2.8.7",
+    "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.2.7",
+    "swagger-typescript-api": "^12.0.4",
     "tailwind-scrollbar": "^3.0.0"
   }
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { MusicPlayer } from "@/features/music-player";
 import { Notification } from "@/features/notification";
@@ -47,7 +47,7 @@ export const Header = () => {
       </Portal>
       <Link
         href="#"
-        className="hover:bg-item-focus btn-ghost btn ml-auto text-xl normal-case lg:ml-0 lg:mr-10">
+        className="btn-ghost btn ml-auto text-xl normal-case hover:bg-item-focus lg:ml-0 lg:mr-10">
         Logo
       </Link>
       <div className="hidden flex-1 items-center lg:flex">
