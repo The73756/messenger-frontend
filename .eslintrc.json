@@ -8,7 +8,6 @@
     "plugin:react-hooks/recommended",
     "next/core-web-vitals"
   ],
-  "plugins": ["prettier"],
   "parser": "@typescript-eslint/parser",
   "ignorePatterns": ["*/**.svg"],
   "settings": {
@@ -42,15 +41,38 @@
         "alphabetize": { "order": "asc", "caseInsensitive": true },
         "newlines-between": "always",
         "pathGroups": [
-          { "group": "internal", "position": "after", "pattern": "@/processes/**" },
+          {
+            "group": "internal",
+            "position": "after",
+            "pattern": "@/processes/**"
+          },
           { "group": "internal", "position": "after", "pattern": "@/pages/**" },
-          { "group": "internal", "position": "after", "pattern": "@/widgets/**" },
-          { "group": "internal", "position": "after", "pattern": "@/features/**" },
-          { "group": "internal", "position": "after", "pattern": "@/entities/**" },
+          {
+            "group": "internal",
+            "position": "after",
+            "pattern": "@/widgets/**"
+          },
+          {
+            "group": "internal",
+            "position": "after",
+            "pattern": "@/features/**"
+          },
+          {
+            "group": "internal",
+            "position": "after",
+            "pattern": "@/entities/**"
+          },
           { "group": "internal", "position": "after", "pattern": "@/shared/**" }
         ],
         "pathGroupsExcludedImportTypes": ["builtin"],
-        "groups": ["builtin", "external", "internal", "parent", "sibling", "index"]
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index"
+        ]
       }
     ],
     "no-restricted-imports": [
@@ -123,11 +145,27 @@
         "rules": [
           {
             "from": "app",
-            "allow": ["processes", "pages", "widgets", "features", "entities", "shared"]
+            "allow": [
+              "processes",
+              "pages",
+              "widgets",
+              "features",
+              "entities",
+              "shared"
+            ]
           },
-          { "from": "processes", "allow": ["pages", "widgets", "features", "entities", "shared"] },
-          { "from": "pages", "allow": ["widgets", "features", "entities", "shared"] },
-          { "from": "widgets", "allow": ["features", "entities", "shared", "widgets"] }, // import widgets in widgets allowed only for LAYOUTS SLICE
+          {
+            "from": "processes",
+            "allow": ["pages", "widgets", "features", "entities", "shared"]
+          },
+          {
+            "from": "pages",
+            "allow": ["widgets", "features", "entities", "shared"]
+          },
+          {
+            "from": "widgets",
+            "allow": ["features", "entities", "shared", "widgets"]
+          }, // import widgets in widgets allowed only for LAYOUTS SLICE
           { "from": "features", "allow": ["entities", "shared"] },
           { "from": "entities", "allow": ["shared"] },
           { "from": "shared", "allow": ["shared"] }
@@ -135,5 +173,7 @@
       }
     ]
   },
-  "overrides": [{ "files": ["**/*.test.*"], "rules": { "boundaries/element-types": "off" } }]
+  "overrides": [
+    { "files": ["**/*.test.*"], "rules": { "boundaries/element-types": "off" } }
+  ]
 }
