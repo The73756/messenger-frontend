@@ -1,7 +1,8 @@
-import { Api } from "@/shared/api/api-generated";
+import { Api, LoginResponse } from "@/shared/api/api-generated";
 
 const accessToken =
-  typeof window !== "undefined" && JSON.stringify(localStorage.getItem("accessToken") || "");
+  typeof window !== "undefined" &&
+  JSON.stringify(localStorage.getItem("accessToken") || "");
 
 let isRefreshing = false;
 let failedQueue: any[] = [];
@@ -17,7 +18,10 @@ const httpClient = new Api({
 const httpClientInstance = httpClient.instance;
 const apiClient = httpClient.api;
 
-const processQueue = (error: any, token = null) => {
+const processQueue = (
+  error: any,
+  token: LoginResponse["accessToken"] | null
+) => {
   failedQueue.forEach((prom) => {
     if (error) {
       prom.reject(error);
@@ -50,14 +54,12 @@ httpClientInstance.interceptors.response.use(
       isRefreshing = true;
 
       return new Promise((resolve, reject) => {
-        const localToken = localStorage.getItem("accessToken") || "";
-        httpClientInstance
-          .post("/api/auth/refresh-tokens", {
-            accessToken: JSON.parse(localToken)?.split(" ")[1],
-          })
+        apiClient
+          .authControllerRefreshTokens()
           .then(({ data }) => {
             localStorage.setItem("accessToken", data.accessToken);
-            httpClientInstance.defaults.headers.common["Authorization"] = data.accessToken;
+            httpClientInstance.defaults.headers.common["Authorization"] =
+              data.accessToken;
             originalRequest.headers["Authorization"] = data.accessToken;
             processQueue(null, data.accessToken);
             resolve(httpClientInstance(originalRequest));
@@ -73,7 +75,7 @@ httpClientInstance.interceptors.response.use(
     }
 
     return Promise.reject(error);
-  },
+  }
 );
 
 export { apiClient, httpClient };

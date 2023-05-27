@@ -2,10 +2,9 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import { login, checkAuth } from "@/entities/user";
+import { login } from "@/entities/user";
 
 import { emailRule, passwordRule } from "@/shared/helpers";
 import { useAppDispatch, useAppSelector } from "@/shared/model";
@@ -25,20 +24,16 @@ export const Form = () => {
   } = useForm<IFormInputs>({
     mode: "onBlur",
   });
-  const { isAuth, error } = useAppSelector((state) => state.user);
+  const { error } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
 
   const onSubmit: SubmitHandler<IFormInputs> = (data) => {
-    dispatch(login(data));
+    dispatch(login(data)).then(({ meta }) => {
+      if (meta && meta.requestStatus === "fulfilled") {
+        router.push("/");
+      }
+    });
   };
-
-  // useEffect(() => {
-  // if (isAuth) router.push("/");
-  // }, [isAuth]);
-
-  useEffect(() => {
-    dispatch(checkAuth());
-  }, []);
 
   return (
     <div className="flex flex-col items-center p-20">

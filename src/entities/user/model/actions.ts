@@ -1,6 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import { apiClient, LoginWithEmailDto, RegisterWithEmailDto } from "@/shared/api";
+import {
+  apiClient,
+  LoginWithEmailDto,
+  RegisterWithEmailDto,
+} from "@/shared/api";
 
 export const registration = createAsyncThunk(
   "auth/registration",
@@ -11,23 +15,28 @@ export const registration = createAsyncThunk(
     } catch (e: any) {
       return thunkApi.rejectWithValue(e.response.data.message);
     }
-  },
+  }
 );
 
 export const login = createAsyncThunk(
   "auth/login",
   async (userData: LoginWithEmailDto, thunkApi) => {
     try {
-      const { data: resLogin } = await apiClient.authControllerLoginWithEmail(userData);
+      const { data: resLogin } = await apiClient.authControllerLoginWithEmail(
+        userData
+      );
 
-      await localStorage.setItem("accessToken", JSON.stringify(resLogin.accessToken));
+      await localStorage.setItem(
+        "accessToken",
+        JSON.stringify(resLogin.accessToken)
+      );
 
       const { data: user } = await apiClient.userControllerGetCurrentUser();
       return user;
     } catch (e: any) {
       return thunkApi.rejectWithValue(e.response.data.message);
     }
-  },
+  }
 );
 
 export const checkAuth = createAsyncThunk("auth/check", async (_, thunkApi) => {

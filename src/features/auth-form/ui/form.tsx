@@ -24,6 +24,7 @@ export const Form = () => {
   const {
     register,
     handleSubmit,
+    getValues,
     formState: { errors },
   } = useForm<IFormInputs>({
     mode: "onBlur",
@@ -73,11 +74,14 @@ export const Form = () => {
             placeholder="Введите пароль"
           />
           <Input
-            register={register("confirmPassword", passwordRule)}
+            register={register("confirmPassword", {
+              validate: (value) =>
+                value === getValues("password") || "Пароли не совпадают",
+            })}
             type="password"
             id="confirm-password"
             label="Повторите пароль"
-            error={errors.password}
+            error={errors.confirmPassword}
             placeholder="Повторите пароль"
           />
         </div>
