@@ -3,9 +3,11 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 
 import { login } from "@/entities/user";
 
+import { routes } from "@/shared/constants";
 import { emailRule, passwordRule } from "@/shared/helpers";
 import { useAppDispatch, useAppSelector } from "@/shared/model";
 import { Button, IconBtn, Input } from "@/shared/ui";
@@ -20,6 +22,7 @@ export const Form = () => {
   const {
     register,
     handleSubmit,
+    clearErrors,
     formState: { errors },
   } = useForm<IFormInputs>({
     mode: "onBlur",
@@ -28,10 +31,17 @@ export const Form = () => {
   const dispatch = useAppDispatch();
 
   const onSubmit: SubmitHandler<IFormInputs> = (data) => {
-    dispatch(login(data)).then(({ meta }) => {
-      if (meta && meta.requestStatus === "fulfilled") {
-        router.push("/");
-      }
+    const loginPromise = dispatch(login(data))
+      .unwrap()
+      .then(() => {
+        router.push(routes.HOME);
+        clearErrors();
+      });
+
+    toast.promise(loginPromise, {
+      loading: "Вход...",
+      success: "Добро пожаловать!",
+      error: (err) => err,
     });
   };
 
@@ -40,9 +50,7 @@ export const Form = () => {
       <div>
         <div className="mb-8 h-[120px] w-[120px] rounded-full bg-white"></div>
       </div>
-      <h2 className="mb-5 text-center text-4xl font-semibold text-white">
-        Войти
-      </h2>
+      <h2 className="mb-5 text-center text-4xl font-semibold text-white">Войти</h2>
       {error && <p className="text-error">{error}</p>}
       <form onSubmit={handleSubmit(onSubmit)} className="w-[350px]">
         <div className="form-control w-full max-w-xl">
@@ -68,9 +76,7 @@ export const Form = () => {
           </Button>
           <div className="mt-5 flex justify-center">
             <Link href="/auth">
-              <p className="text-center text-xs font-medium">
-                Нет аккаунта? Зарегистрируйтесь
-              </p>
+              <p className="text-center text-xs font-medium">Нет аккаунта? Зарегистрируйтесь</p>
             </Link>
           </div>
         </div>

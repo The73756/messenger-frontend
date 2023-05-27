@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 
 import { registration } from "@/entities/user";
 
@@ -25,30 +25,36 @@ export const Form = () => {
     register,
     handleSubmit,
     getValues,
+    clearErrors,
     formState: { errors },
   } = useForm<IFormInputs>({
     mode: "onBlur",
   });
-  const { isReg, error } = useAppSelector((state) => state.user);
+  const { error } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
 
   const onSubmit: SubmitHandler<IFormInputs> = (data) => {
-    dispatch(registration(data));
-  };
+    const regPromise = dispatch(registration(data))
+      .unwrap()
+      .then(() => {
+        router.push(routes.LOGIN);
+        clearErrors();
+      });
 
-  useEffect(() => {
-    if (isReg) router.push(routes.LOGIN);
-  }, [isReg]);
+    toast.promise(regPromise, {
+      loading: "Регистрация...",
+      success: "Успешно!",
+      error: (err) => err,
+    });
+  };
 
   return (
     <div className="flex h-screen flex-col items-center p-20">
       <div>
         <div className="mb-8 h-[120px] w-[120px] rounded-full bg-white"></div>
       </div>
-      <h2 className="mb-5 text-center text-4xl font-semibold text-white">
-        Регистрация
-      </h2>
-      {error && <p className="text-error text-sm">{error}</p>}
+      <h2 className="mb-5 text-center text-4xl font-semibold text-white">Регистрация</h2>
+      {error && <p className="text-sm text-error">{error}</p>}
       <form onSubmit={handleSubmit(onSubmit)} className="w-[350px]">
         <div className="form-control w-full max-w-xl">
           <Input
@@ -75,8 +81,7 @@ export const Form = () => {
           />
           <Input
             register={register("confirmPassword", {
-              validate: (value) =>
-                value === getValues("password") || "Пароли не совпадают",
+              validate: (value) => value === getValues("password") || "Пароли не совпадают",
             })}
             type="password"
             id="confirm-password"
@@ -91,9 +96,7 @@ export const Form = () => {
           </Button>
           <div className="mt-5 flex justify-center">
             <Link href="/login">
-              <p className="text-center text-xs font-medium">
-                Есть аккаунт? Войти
-              </p>
+              <p className="text-center text-xs font-medium">Есть аккаунт? Войти</p>
             </Link>
           </div>
         </div>
