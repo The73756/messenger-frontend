@@ -1,14 +1,15 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import { checkAuth, login } from "@/entities/user";
+import { login, checkAuth } from "@/entities/user";
 
 import { emailRule, passwordRule } from "@/shared/helpers";
 import { useAppDispatch, useAppSelector } from "@/shared/model";
-import { IconBtn, Input } from "@/shared/ui";
+import { Button, IconBtn, Input } from "@/shared/ui";
 
 interface IFormInputs {
   email: string;
@@ -16,6 +17,7 @@ interface IFormInputs {
 }
 
 export const Form = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -23,7 +25,7 @@ export const Form = () => {
   } = useForm<IFormInputs>({
     mode: "onBlur",
   });
-  const { error } = useAppSelector((state) => state.user);
+  const { isAuth, error } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
 
   const onSubmit: SubmitHandler<IFormInputs> = (data) => {
@@ -39,10 +41,15 @@ export const Form = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center border-r-8 p-20">
-      <h2 className="text-center text-2xl text-white">Вход</h2>
+    <div className="flex flex-col items-center p-20">
+      <div>
+        <div className="mb-8 h-[120px] w-[120px] rounded-full bg-white"></div>
+      </div>
+      <h2 className="mb-5 text-center text-4xl font-semibold text-white">
+        Войти
+      </h2>
       {error && <p className="text-error">{error}</p>}
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className="w-[350px]">
         <div className="form-control w-full max-w-xl">
           <Input
             register={register("email", emailRule)}
@@ -60,11 +67,17 @@ export const Form = () => {
             placeholder="Введите пароль"
           />
         </div>
-        <div className="mt-4 flex items-center gap-4">
-          <button className="btn" type="submit">
+        <div className="mt-4">
+          <Button className="min-w-full py-3 text-base" type="submit">
             Войти
-          </button>
-          <Link href="/auth">Нет аккаунта? Зарегистрируйтесь</Link>
+          </Button>
+          <div className="mt-5 flex justify-center">
+            <Link href="/auth">
+              <p className="text-center text-xs font-medium">
+                Нет аккаунта? Зарегистрируйтесь
+              </p>
+            </Link>
+          </div>
         </div>
 
         <div className="mt-4 flex justify-center gap-2">
