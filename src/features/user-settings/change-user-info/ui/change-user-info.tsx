@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from "react";
+
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import { nameRule } from "@/shared/helpers";
@@ -29,14 +29,8 @@ export const ChangeUserInfo = () => {
       aboutMe: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
     },
   });
-
   const watchNickName = watch("nickName");
   const watchAboutMe = watch("aboutMe");
-
-  useEffect(() => {
-    const subscription = watch((value, { name, type }) => console.log(value, name, type));
-    return () => subscription.unsubscribe();
-  }, [watch]);
 
   const onSubmit: SubmitHandler<IFormInputs> = (data) => {
     console.log(data);

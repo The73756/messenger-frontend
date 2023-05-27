@@ -1,23 +1,42 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+
 import { MainLayout } from "@/widgets/layouts";
 import { UserProfile } from "@/widgets/user-profile";
 
-import { asSyncComponent } from "@/shared/lib";
+import { checkAuth } from "@/entities/user";
 
-async function getData() {
-  const res = await fetch("http://localhost:3000/api/hello");
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
+import { routes } from "@/shared/constants";
+import { useAppDispatch } from "@/shared/model";
+
+export const AccountPage = () => {
+  const dispatch = useAppDispatch();
+  const router = useRouter();
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    (() => {
+      dispatch(checkAuth())
+        .unwrap()
+        .then(() => {
+          setIsLoading(false);
+        })
+        .catch(() => {
+          router.push(routes.LOGIN);
+        });
+    })();
+  }, []);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
   }
-  return res.json();
-}
-
-export const AccountPage = asSyncComponent(async () => {
-  const data = await getData();
-  console.log(data);
 
   return (
     <MainLayout>
       <UserProfile />
     </MainLayout>
   );
-});
+};
