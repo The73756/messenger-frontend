@@ -1,12 +1,53 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { BaseQueryFn, FetchBaseQueryMeta } from "@reduxjs/toolkit/query";
+import {
+  FetchArgs,
+  FetchBaseQueryError,
+  createApi,
+  fetchBaseQuery,
+} from "@reduxjs/toolkit/query/react";
 
 import { UserResponse } from "@/shared/api";
 
+let accessToken =
+  typeof window !== "undefined" && JSON.stringify(localStorage.getItem("accessToken") || "");
+
+const baseQuery = fetchBaseQuery({
+  baseUrl: `${process.env.NEXT_PUBLIC_CLIENT_URL}/api/users`,
+  prepareHeaders: (headers, { getState }) => {
+    headers.set("Authorization", accessToken + "");
+    return headers;
+  },
+});
+
+const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError> = async (
+  args,
+  api,
+  extraOptions,
+) => {
+  let result = await baseQuery(args, api, extraOptions);
+  if (result.error && result.error.status === 401) {
+    const refreshResult: any = await baseQuery(
+      {
+        url: `${process.env.NEXT_PUBLIC_CLIENT_URL}/api/auth/refresh-tokens`,
+        method: "POST",
+      },
+      api,
+      extraOptions,
+    );
+    if (refreshResult.data) {
+      localStorage.setItem("accessToken", refreshResult.data.accessToken);
+      accessToken = refreshResult.data.accessToken;
+      result = await baseQuery(args, api, extraOptions);
+    } else {
+      // api.dispatch(loggedOut());
+    }
+  }
+  return result;
+};
+
 export const userApi = createApi({
   reducerPath: "userApi",
-  baseQuery: fetchBaseQuery({
-    baseUrl: "localhost:3000/api/users", //localhost:3000 временно
-  }),
+  baseQuery: baseQueryWithReauth,
   endpoints: (build) => ({
     getUser: build.query<UserResponse, string>({
       query: (userId) => ({
@@ -26,10 +67,11 @@ export const userApi = createApi({
         method: "GET",
       }),
     }),
-    updateUser: build.mutation<undefined, string>({
-      query: (userId) => ({
-        url: `/${userId}`,
+    updateUser: build.mutation<UserResponse, UserResponse>({
+      query: (user: UserResponse) => ({
+        url: `/${user.id}`,
         method: "PUT",
+        body: user,
       }),
     }),
     deleteUser: build.mutation<undefined, string>({
