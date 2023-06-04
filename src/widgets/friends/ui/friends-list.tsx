@@ -1,4 +1,6 @@
-import { UserFriend } from "@/entities/user-friend";
+"use client";
+
+import { UserFriend } from "@/entities/user";
 
 export const FriendsList = () => {
   return (
