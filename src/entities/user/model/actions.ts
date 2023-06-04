@@ -44,10 +44,9 @@ export const checkAuth = createAsyncThunk("auth/check", async (_, thunkApi) => {
   }
 });
 
-export const update = createAsyncThunk("user/update", async (user: UserUpdate, thunkApi) => {
+export const updateUser = createAsyncThunk("user/update", async (user: UserUpdate, thunkApi) => {
   try {
     const { data } = await apiClient.usersControllerUpdateOne(user);
-    console.log(data);
     return data;
   } catch (e: any) {
     return thunkApi.rejectWithValue(e.response.data.message);

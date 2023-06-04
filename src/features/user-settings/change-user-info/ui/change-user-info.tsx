@@ -2,7 +2,7 @@
 
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import { userApi, update } from "@/entities/user";
+import { updateUser } from "@/entities/user";
 
 import { UserUpdate } from "@/shared/constants";
 import { nameRule } from "@/shared/helpers";
@@ -38,12 +38,13 @@ export const ChangeUserInfo = () => {
   const watchAboutMe = watch("aboutMe");
 
   const onSubmit: SubmitHandler<IFormInputs> = (data) => {
-    // const updateUser: UserUpdate = {
-    //   ...user,
-    //   ...data
-    // }
-    // console.log(updateUser)
-    // dispatch(update(...data))
+    if (user) {
+      const updateUserObject: UserUpdate = {
+        id: user.id,
+        ...data,
+      };
+      dispatch(updateUser(updateUserObject));
+    }
   };
 
   return (

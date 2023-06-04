@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { UserResponse } from "@/shared/api";
 
-import { checkAuth, login, registration, update } from "./actions";
+import { checkAuth, login, registration, updateUser } from "./actions";
 
 interface UserState {
   user: UserResponse | null;
@@ -58,8 +58,8 @@ export const userSlice = createSlice({
         state.isAuth = false;
         state.error = action.payload;
       })
-      .addCase(update.fulfilled.type, (state, action: PayloadAction<UserResponse>) => {
-        // state.user = action.payload;
+      .addCase(updateUser.fulfilled.type, (state, action: PayloadAction<UserResponse>) => {
+        state.user = action.payload;
       })
   },
 });
