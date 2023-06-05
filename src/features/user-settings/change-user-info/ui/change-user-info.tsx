@@ -1,19 +1,24 @@
 "use client";
-import { useEffect } from "react";
+
 import { SubmitHandler, useForm } from "react-hook-form";
 
+import { updateUser } from "@/entities/user";
+
+import { UserUpdate } from "@/shared/constants";
 import { nameRule } from "@/shared/helpers";
-import { Input } from "@/shared/ui";
-import { Textarea } from "@/shared/ui/textarea";
+import { useAppDispatch, useAppSelector } from "@/shared/model";
+import { Input, Textarea } from "@/shared/ui";
 
 interface IFormInputs {
   firstName: string;
   lastName: string;
-  nickName: string;
+  nickname: string;
   aboutMe: string;
 }
 
 export const ChangeUserInfo = () => {
+  const { user } = useAppSelector((state) => state.user);
+  const dispatch = useAppDispatch();
   const {
     register,
     handleSubmit,
@@ -23,23 +28,23 @@ export const ChangeUserInfo = () => {
   } = useForm<IFormInputs>({
     mode: "onBlur",
     defaultValues: {
-      firstName: "The73756",
-      lastName: "",
-      nickName: "the73756",
-      aboutMe: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+      firstName: user?.firstName,
+      lastName: user?.lastName,
+      nickname: user?.nickname,
+      aboutMe: user?.aboutMe,
     },
   });
-
-  const watchNickName = watch("nickName");
+  const watchNickname = watch("nickname");
   const watchAboutMe = watch("aboutMe");
 
-  useEffect(() => {
-    const subscription = watch((value, { name, type }) => console.log(value, name, type));
-    return () => subscription.unsubscribe();
-  }, [watch]);
-
   const onSubmit: SubmitHandler<IFormInputs> = (data) => {
-    console.log(data);
+    if (user) {
+      const updateUserObject: UserUpdate = {
+        id: user.id,
+        ...data,
+      };
+      dispatch(updateUser(updateUserObject));
+    }
   };
 
   return (
@@ -66,7 +71,7 @@ export const ChangeUserInfo = () => {
       />
 
       <Input
-        register={register("nickName", {
+        register={register("nickname", {
           required: true,
           pattern: {
             value: /^[a-zA-Z0-9_]+$/,
@@ -74,10 +79,10 @@ export const ChangeUserInfo = () => {
           },
         })}
         className="text-xl"
-        label={`Ссылка на профиль - @${watchNickName}`}
+        label={`Ссылка на профиль - @${watchNickname}`}
         placeholder="super-ivan"
-        error={errors.nickName}
-        id="nickName"
+        error={errors.nickname}
+        id="nickname"
       />
 
       <Textarea

@@ -1,6 +1,6 @@
 import { MenuList } from "@/features/menu-list";
 
-import { UserCard } from "@/entities/user-card";
+import { UserCard } from "@/entities/user";
 
 export const UserBtn = () => {
   return (

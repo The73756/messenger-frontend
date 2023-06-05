@@ -132,6 +132,7 @@ import axios, {
   HeadersDefaults,
   ResponseType,
 } from "axios";
+import { UserUpdate } from "../constants";
 
 export type QueryParamsType = Record<string | number, any>;
 
@@ -378,11 +379,12 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * @summary Обновление данных пользователя
      * @request PUT:/api/users/{userId}
      */
-    usersControllerUpdateOne: (userId: string, params: RequestParams = {}) =>
+    usersControllerUpdateOne: (user: UserUpdate, params: RequestParams = {}) =>
       this.request<UserResponse, any>({
-        path: `/api/users/${userId}`,
+        path: `/api/users/${user.id}`,
         method: "PUT",
         format: "json",
+        body: user,
         ...params,
       }),
 

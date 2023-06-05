@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { UserResponse } from "@/shared/api";
 
-import { checkAuth, login, registration } from "./actions";
+import { checkAuth, login, registration, updateUser } from "./actions";
 
 interface UserState {
   user: UserResponse | null;
@@ -27,6 +27,10 @@ export const userSlice = createSlice({
       state.isAuth = false;
       state.error = "";
     },
+    tokenReceived(state, action) {
+      console.log(action.payload.accessToken)
+      localStorage.setItem("accessToken", action.payload.accessToken);
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -50,7 +54,12 @@ export const userSlice = createSlice({
         state.error = "";
       })
       .addCase(checkAuth.rejected.type, (state, action: PayloadAction<string>) => {
+        state.user = null;
+        state.isAuth = false;
         state.error = action.payload;
-      });
+      })
+      .addCase(updateUser.fulfilled.type, (state, action: PayloadAction<UserResponse>) => {
+        state.user = action.payload;
+      })
   },
 });

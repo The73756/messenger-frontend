@@ -1,14 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 
-import { checkAuth, login } from "@/entities/user";
+import { login } from "@/entities/user";
 
+import { routes } from "@/shared/constants";
 import { emailRule, passwordRule } from "@/shared/helpers";
 import { useAppDispatch, useAppSelector } from "@/shared/model";
-import { IconBtn, Input } from "@/shared/ui";
+import { Button, IconBtn, Input } from "@/shared/ui";
 
 interface IFormInputs {
   email: string;
@@ -16,9 +18,11 @@ interface IFormInputs {
 }
 
 export const Form = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
+    clearErrors,
     formState: { errors },
   } = useForm<IFormInputs>({
     mode: "onBlur",
@@ -27,22 +31,28 @@ export const Form = () => {
   const dispatch = useAppDispatch();
 
   const onSubmit: SubmitHandler<IFormInputs> = (data) => {
-    dispatch(login(data));
+    const loginPromise = dispatch(login(data))
+      .unwrap()
+      .then(() => {
+        router.push(routes.HOME);
+        clearErrors();
+      });
+
+    toast.promise(loginPromise, {
+      loading: "Вход...",
+      success: "Добро пожаловать!",
+      error: (err) => err,
+    });
   };
 
-  // useEffect(() => {
-  // if (isAuth) router.push("/");
-  // }, [isAuth]);
-
-  useEffect(() => {
-    dispatch(checkAuth());
-  }, []);
-
   return (
-    <div className="flex flex-col items-center border-r-8 p-20">
-      <h2 className="text-center text-2xl text-white">Вход</h2>
+    <div className="flex flex-col items-center p-20">
+      <div>
+        <div className="mb-8 h-[120px] w-[120px] rounded-full bg-white"></div>
+      </div>
+      <h2 className="mb-5 text-center text-4xl font-semibold text-white">Войти</h2>
       {error && <p className="text-error">{error}</p>}
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className="w-[350px]">
         <div className="form-control w-full max-w-xl">
           <Input
             register={register("email", emailRule)}
@@ -60,11 +70,15 @@ export const Form = () => {
             placeholder="Введите пароль"
           />
         </div>
-        <div className="mt-4 flex items-center gap-4">
-          <button className="btn" type="submit">
+        <div className="mt-4">
+          <Button className="min-w-full py-3 text-base" type="submit">
             Войти
-          </button>
-          <Link href="/auth">Нет аккаунта? Зарегистрируйтесь</Link>
+          </Button>
+          <div className="mt-5 flex justify-center">
+            <Link href="/auth">
+              <p className="text-center text-xs font-medium">Нет аккаунта? Зарегистрируйтесь</p>
+            </Link>
+          </div>
         </div>
 
         <div className="mt-4 flex justify-center gap-2">

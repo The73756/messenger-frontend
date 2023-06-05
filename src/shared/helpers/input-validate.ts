@@ -18,4 +18,8 @@ export const nameRule: RegisterOptions = {
 
 export const passwordRule: RegisterOptions = {
   required: "Это обязательное поле!",
+  minLength: {
+    value: 6,
+    message: "Минимальная длина 6 символов!",
+  },
 };

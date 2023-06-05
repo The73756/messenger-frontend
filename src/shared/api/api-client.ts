@@ -1,4 +1,6 @@
-import { Api } from "@/shared/api/api-generated";
+import axios from "axios";
+
+import { Api, LoginResponse } from "@/shared/api/api-generated";
 
 const accessToken =
   typeof window !== "undefined" && JSON.stringify(localStorage.getItem("accessToken") || "");
@@ -17,7 +19,7 @@ const httpClient = new Api({
 const httpClientInstance = httpClient.instance;
 const apiClient = httpClient.api;
 
-const processQueue = (error: any, token = null) => {
+const processQueue = (error: any, token: LoginResponse["accessToken"] | null) => {
   failedQueue.forEach((prom) => {
     if (error) {
       prom.reject(error);
@@ -50,11 +52,8 @@ httpClientInstance.interceptors.response.use(
       isRefreshing = true;
 
       return new Promise((resolve, reject) => {
-        const localToken = localStorage.getItem("accessToken") || "";
-        httpClientInstance
-          .post("/api/auth/refresh-tokens", {
-            accessToken: JSON.parse(localToken)?.split(" ")[1],
-          })
+        axios
+          .post("/api/auth/refresh-tokens")
           .then(({ data }) => {
             localStorage.setItem("accessToken", data.accessToken);
             httpClientInstance.defaults.headers.common["Authorization"] = data.accessToken;
