@@ -1,24 +1,14 @@
-export interface IUser {
-  aboutMe: string;
-  birthday: string;
-  email: string;
-  firstName: string;
+export interface UserUpdate {
   id: string;
-  lastName: string;
-  nickname: string;
-  phone: string;
-  photo: string[];
-  sex: string;
-  status: string;
-}
-
-export interface ICreateUser {
-  email: string;
-  password: string;
-  confirmPassword: string;
-}
-
-export interface ILoginUser {
-  email: string;
-  password: string;
+  email?: string;
+  nickname?: string;
+  firstName?: string;
+  lastName?: string;
+  birthday?: string;
+  sex?: string;
+  photo?: string[];
+  phone?: number;
+  status?: string;
+  aboutMe?: string;
+  roles?: string[];
 }

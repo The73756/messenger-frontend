@@ -34,7 +34,7 @@ export const ParametersSearch = () => {
   return (
     <div
       tabIndex={0}
-      className="bg-neutral dropdown-content absolute right-0 mt-2 w-40 rounded p-2 shadow">
+      className="dropdown-content absolute right-0 mt-2 w-40 rounded bg-neutral p-2 shadow">
       <span className="mb-2 block text-sm font-medium">Город</span>
       <Select value={city || "Выберите город"} items={cities} changeValue={changeCity} />
       <span className="mb-2 mt-2 block text-sm font-medium">Возраст</span>

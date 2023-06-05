@@ -1,5 +1,3 @@
-import { FC } from "react";
-
 interface RadioProps {
   value: string;
   name: string;
@@ -7,7 +5,7 @@ interface RadioProps {
   checked?: boolean;
 }
 
-export const Radio: FC<RadioProps> = ({ value, name, id, checked }) => {
+export const Radio = ({ value, name, id, checked }: RadioProps) => {
   return (
     <div className="flex items-center gap-2">
       <label
@@ -18,7 +16,7 @@ export const Radio: FC<RadioProps> = ({ value, name, id, checked }) => {
           id={id}
           name={name}
           type="radio"
-          className="border-white peer relative h-full w-full cursor-pointer appearance-none rounded-full border checked:border-primary checked:bg-primary"
+          className="peer relative h-full w-full cursor-pointer appearance-none rounded-full border border-white checked:border-primary checked:bg-primary"
           checked={checked}
           onChange={() => {}}
         />

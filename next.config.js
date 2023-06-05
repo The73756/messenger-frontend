@@ -10,7 +10,7 @@ const nextConfig = {
         destination: "http://95.163.240.197/api/:path*",
       },
     ];
-  }
+  },
 };
 
 module.exports = nextConfig;

@@ -1,1 +1,1 @@
-export { asSyncComponent } from "./asSyncComponent";
+export { asSyncComponent } from "./as-sync-component";

@@ -1,9 +1,9 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { CSSTransition } from "react-transition-group";
 
 import { MenuList } from "@/features/menu-list";
 
-import { UserCard } from "@/entities/user-card";
+import { UserCard } from "@/entities/user";
 
 import { useSwipe } from "../lib";
 
@@ -12,7 +12,7 @@ interface BurgerProps {
   close: () => void;
 }
 
-export const Burger: React.FC<BurgerProps> = ({ isShow, close }) => {
+export const Burger = ({ isShow, close }: BurgerProps) => {
   const burgerRef = useRef<HTMLDivElement | null>(null);
   const handlersSwipe = useSwipe({
     swipeLeft: close,

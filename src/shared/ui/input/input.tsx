@@ -24,17 +24,21 @@ export const Input = ({
   return (
     <div className={wrapperClassName}>
       <label className={`label ${labelClassName}`} htmlFor={id}>
-        <span className="label-text">{label}</span>
+        <span className="label-text text-xs font-medium text-[#fff]">
+          {label}
+        </span>
       </label>
       <input
         {...register}
         {...props}
         id={id}
         placeholder={placeholder}
-        className={`input-bordered input w-full ${className} ${error && "input-error"}`}
+        className={`input-bordered input placeholder: placeholder: mb-2 min-w-full border-[#4D658C] text-xs font-normal text-[#fff] placeholder-white ${className} ${
+          error && "input-error"
+        }`}
       />
       {error && (
-        <div className="label-text mt-1 w-full text-error">
+        <div className="label-text text-error mt-1 w-full">
           {error.message || "Это обязательное поле!"}
         </div>
       )}

@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { IUser } from "@/shared/constants";
+import { UserResponse } from "@/shared/api";
 
-import { login, registration, checkAuth } from "./actions";
+import { checkAuth, login, registration, updateUser } from "./actions";
 
 interface UserState {
-  user: IUser | null;
+  user: UserResponse | null;
   isAuth: boolean;
   isReg: boolean;
   error: string;
@@ -27,6 +27,10 @@ export const userSlice = createSlice({
       state.isAuth = false;
       state.error = "";
     },
+    tokenReceived(state, action) {
+      console.log(action.payload.accessToken)
+      localStorage.setItem("accessToken", action.payload.accessToken);
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -36,7 +40,7 @@ export const userSlice = createSlice({
       .addCase(registration.rejected.type, (state, action: PayloadAction<string>) => {
         state.error = action.payload;
       })
-      .addCase(login.fulfilled.type, (state, action: PayloadAction<IUser>) => {
+      .addCase(login.fulfilled.type, (state, action: PayloadAction<UserResponse>) => {
         state.user = action.payload;
         state.isAuth = true;
         state.error = "";
@@ -44,13 +48,18 @@ export const userSlice = createSlice({
       .addCase(login.rejected.type, (state, action: PayloadAction<string>) => {
         state.error = action.payload;
       })
-      .addCase(checkAuth.fulfilled.type, (state, action: PayloadAction<IUser>) => {
+      .addCase(checkAuth.fulfilled.type, (state, action: PayloadAction<UserResponse>) => {
         state.user = action.payload;
         state.isAuth = true;
         state.error = "";
       })
       .addCase(checkAuth.rejected.type, (state, action: PayloadAction<string>) => {
+        state.user = null;
+        state.isAuth = false;
         state.error = action.payload;
       })
-  }
+      .addCase(updateUser.fulfilled.type, (state, action: PayloadAction<UserResponse>) => {
+        state.user = action.payload;
+      })
+  },
 });

@@ -1,3 +1,5 @@
+"use client"
+
 import { FieldError, UseFormRegisterReturn } from "react-hook-form";
 import TextareaAutosize, { TextareaAutosizeProps } from "react-textarea-autosize";
 
