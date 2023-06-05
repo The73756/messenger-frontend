@@ -1,19 +1,13 @@
 "use client";
 
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
-
-import { MusicPlayer } from "@/features/music-player";
-import { Notification } from "@/features/notification";
-import { Search } from "@/features/search";
-
-import { Portal } from "@/shared/ui";
 
 import { useSwipe } from "../lib";
 
 import { Burger } from "./burger";
+import { HeaderMiddle } from "./header-middle";
 import { HeaderNav } from "./header-nav";
-import { UserBtn } from "./user-btn";
+import { HeaderProfile } from "./header-profile";
 
 export const Header = () => {
   const [isShowBurger, setIsShowBurger] = useState<boolean>(false);
@@ -28,8 +22,10 @@ export const Header = () => {
   }, []);
 
   return (
-    <div {...handlersSwipe} className="navbar z-10 mx-auto mb-[15px]">
+    <div {...handlersSwipe} className="navbar p-0 pt-10 z-10 mx-auto mb-[15px] gap-[15px] items-stretch justify-between text-white">
       <HeaderNav />
+      <HeaderMiddle />
+      <HeaderProfile />
       {/* <button
         onClick={() => setIsShowBurger(true)}
         className="flex flex-col items-start space-y-2 lg:hidden">

@@ -3,8 +3,6 @@ import { CSSTransition } from "react-transition-group";
 
 import { MenuList } from "@/features/menu-list";
 
-import { UserCard } from "@/entities/user";
-
 import { useSwipe } from "../lib";
 
 interface BurgerProps {
@@ -28,7 +26,6 @@ export const Burger = ({ isShow, close }: BurgerProps) => {
         className="burger fixed bottom-0 left-0 top-0 z-20 flex">
         <div className="flex h-full w-72 flex-col overflow-y-auto bg-item p-3 shadow">
           <div className="space-y-3">
-            <UserCard />
             <MenuList />
           </div>
         </div>
