@@ -7,8 +7,8 @@ export const MusicInfo = () => {
         <Image fill src="/image/avatar.jpg" alt="Аватар" className="rounded-full" />
       </div>
       <div>
-        <h5 className="text-lg font-medium leading-[18px] text-white">hate if ur mad</h5>
-        <span className="text-sm font-medium leading-4 text-white opacity-50">Yameli Online</span>
+        <h5 className="text-lg font-medium leading-[18px]">hate if ur mad</h5>
+        <span className="text-sm font-medium leading-4 opacity-50">Yameli Online</span>
       </div>
     </div>
   );
