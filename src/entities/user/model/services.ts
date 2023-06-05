@@ -1,4 +1,4 @@
-import { BaseQueryFn, FetchBaseQueryMeta } from "@reduxjs/toolkit/query";
+import { BaseQueryFn } from "@reduxjs/toolkit/query";
 import {
   FetchArgs,
   FetchBaseQueryError,
@@ -38,8 +38,6 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQue
       localStorage.setItem("accessToken", refreshResult.data.accessToken);
       accessToken = refreshResult.data.accessToken;
       result = await baseQuery(args, api, extraOptions);
-    } else {
-      // api.dispatch(loggedOut());
     }
   }
   return result;
@@ -65,13 +63,6 @@ export const userApi = createApi({
       query: (email) => ({
         url: `/email/${email}`,
         method: "GET",
-      }),
-    }),
-    updateUser: build.mutation<UserResponse, UserResponse>({
-      query: (user: UserResponse) => ({
-        url: `/${user.id}`,
-        method: "PUT",
-        body: user,
       }),
     }),
     deleteUser: build.mutation<undefined, string>({
