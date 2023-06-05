@@ -25,6 +25,8 @@ export interface SpritesMap {
     | "friends"
     | "group"
     | "message"
+    | "moon"
+    | "notes"
     | "photo"
     | "rotate"
     | "save"
@@ -61,6 +63,8 @@ export const SPRITES_META: { [K in keyof SpritesMap]: SpritesMap[K][] } = {
     "friends",
     "group",
     "message",
+    "moon",
+    "notes",
     "photo",
     "rotate",
     "save",

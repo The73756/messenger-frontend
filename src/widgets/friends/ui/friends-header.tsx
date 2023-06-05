@@ -1,7 +1,5 @@
 "use client";
 
-import { ParametersSearch } from "@/features/parameters-search";
-
 import { Button, Icon } from "@/shared/ui";
 
 export const FriendsHeader = () => {
@@ -18,13 +16,6 @@ export const FriendsHeader = () => {
           placeholder="Поиск друзей"
           className="flex-1 bg-transparent pl-2 text-base outline-none"
         />
-        <div className="dropdown-end dropdown">
-          <button tabIndex={0} className="flex h-8 items-center gap-1 px-2 hover:underline">
-            Параметры
-            <Icon name="figures/arrow" className="h-2 w-2 translate-y-0.5" />
-          </button>
-          <ParametersSearch />
-        </div>
         <button className="flex h-8 w-14 items-center justify-center rounded bg-neutral transition-colors hover:bg-neutral-focus">
           <Icon name="settings/search" className="h-5 w-5" />
         </button>

@@ -42,4 +42,8 @@
   .menu :where(li:not(.menu-title):not(:empty)) > :where(*:not(ul):active) {
     @apply bg-item-focus text-base-content;
   }
+
+  .container {
+    @apply max-w-[1680px];
+  }
 }

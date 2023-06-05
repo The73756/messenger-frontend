@@ -12,6 +12,7 @@ import { Portal } from "@/shared/ui";
 import { useSwipe } from "../lib";
 
 import { Burger } from "./burger";
+import { HeaderNav } from "./header-nav";
 import { UserBtn } from "./user-btn";
 
 export const Header = () => {
@@ -27,8 +28,9 @@ export const Header = () => {
   }, []);
 
   return (
-    <div {...handlersSwipe} className="navbar bottom-0 z-10 mx-auto mb-3 bg-item">
-      <button
+    <div {...handlersSwipe} className="navbar z-10 mx-auto mb-[15px]">
+      <HeaderNav />
+      {/* <button
         onClick={() => setIsShowBurger(true)}
         className="flex flex-col items-start space-y-2 lg:hidden">
         <div className="h-0.5 w-8 bg-gray-600"></div>
@@ -55,7 +57,7 @@ export const Header = () => {
         <Notification />
         <MusicPlayer />
         <UserBtn />
-      </div>
+      </div> */}
     </div>
   );
 };
