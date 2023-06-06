@@ -15,16 +15,18 @@ export interface SpritesMap {
     | "smile"
     | "video";
   figures: "arrow" | "check" | "cross";
-  notification: "bell";
-  player: "next" | "play" | "prev";
+  player: "next" | "pause" | "play" | "prev" | "volume";
   settings:
     | "account"
+    | "bell"
     | "delete"
     | "exit"
     | "flip"
     | "friends"
     | "group"
     | "message"
+    | "moon"
+    | "notes"
     | "photo"
     | "rotate"
     | "save"
@@ -51,16 +53,18 @@ export const SPRITES_META: { [K in keyof SpritesMap]: SpritesMap[K][] } = {
     "video",
   ],
   figures: ["arrow", "check", "cross"],
-  notification: ["bell"],
-  player: ["next", "play", "prev"],
+  player: ["next", "pause", "play", "prev", "volume"],
   settings: [
     "account",
+    "bell",
     "delete",
     "exit",
     "flip",
     "friends",
     "group",
     "message",
+    "moon",
+    "notes",
     "photo",
     "rotate",
     "save",

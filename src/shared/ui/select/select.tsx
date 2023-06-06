@@ -42,10 +42,10 @@ export const Select = <T extends string | number>({
         onClick={openSelect}
         className="flex w-full items-center justify-between gap-2 whitespace-nowrap rounded border-[1px] border-solid border-slate-500 p-1 text-sm">
         {value}
-        <Icon
+        {/* <Icon
           name="figures/arrow"
           className={"h-2 w-2" + (isShow ? " rotate-180" : " translate-y-0.5")}
-        />
+        /> */}
       </button>
       {isShow && (
         <SelectItem
