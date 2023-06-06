@@ -47,12 +47,9 @@
     @apply max-w-[1680px];
   }
 
-  .no-scrollbar {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-  }
-
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
+  .height-widget {
+    --height-header: 133px;
+    --offset-bottom: 40px;
+    height: calc(100vh - (var(--height-header) + var(--offset-bottom)));
   }
 }
