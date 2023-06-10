@@ -1,23 +1,30 @@
 import Image from "next/image";
+import Link from "next/link";
 
-export const ChatCard = () => {
+interface ChatCardProps {
+  messages?: number;
+  href: string;
+}
+
+export const ChatCard = ({ messages, href }: ChatCardProps) => {
   return (
-    <>
-      <article className="flex w-full">
-        <div className="avatar">
-          <div className="w-12 rounded-full">
-            <Image src="/image/avatar.jpg" width="48" height="48" alt="Аватар чата" />
-          </div>
-        </div>
-        <div className="max-w-full overflow-hidden">
-          <strong className="font-semibold">The73756:</strong>
-          <div className="flex max-w-min gap-1">
-            <p className="truncate">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            <p>10:11</p>
-          </div>
-        </div>
-      </article>
-      <div className="divider pointer-events-none mx-0 mb-1 mt-1 w-full border-none px-0 py-0 after:content-none"></div>
-    </>
+    <Link href={href} className="flex gap-2.5 rounded-[10px] px-5 py-2.5 hover:bg-primary/40">
+      <div className="relative h-[35px] w-[35px]">
+        <Image fill src="/image/avatar.jpg" alt="Аватар" className="rounded-full object-cover" />
+        <div className="absolute bottom-[2px] right-[2px] h-2.5 w-2.5 rounded-full border-[1px] border-solid border-neutral bg-primary" />
+      </div>
+      <div>
+        <span className="block text-[13px] font-medium leading-4">Hte62623</span>
+        <span className="block text-xs font-medium leading-[15px]">thebsfcgasfgvfaf</span>
+      </div>
+      <div className="relative ml-auto">
+        <span className="block text-[10px] font-medium leading-[12px]">01:11</span>
+        {messages && (
+          <span className="absolute bottom-0 right-0 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-[10px]">
+            {messages}
+          </span>
+        )}
+      </div>
+    </Link>
   );
 };

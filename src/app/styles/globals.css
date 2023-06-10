@@ -46,4 +46,18 @@
   .container {
     @apply max-w-[1680px];
   }
+
+  .scroll {
+    @apply scrollbar scrollbar-thumb-primary scrollbar-w-1;
+  }
+
+  .height-widget {
+    --height-header: 133px;
+    --offset-bottom: 40px;
+    height: calc(100vh - (var(--height-header) + var(--offset-bottom)));
+  }
+
+  .btn-rect {
+    @apply btn flex h-11 min-h-0 w-11 items-center justify-center gap-[15px] rounded-[10px] border-none p-0 hover:bg-primary-rgba hover:text-primary;
+  }
 }

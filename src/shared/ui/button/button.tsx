@@ -13,7 +13,7 @@ export const Button = ({
   return (
     <button
       type={type}
-      className={`btn h-auto min-h-0 flex-1 bg-[#4D658C] py-1 text-sm normal-case ${className}`}
+      className={`btn h-auto min-h-0 flex-1 bg-primary py-1 text-sm normal-case ${className}`}
       {...props}
     >
       {children}
