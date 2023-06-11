@@ -1,4 +1,4 @@
-import { ChatCard } from "@/entities/chat-card";
+import { ChatCard } from "@/entities/chat";
 
 export const ChatListChats = () => {
   return (

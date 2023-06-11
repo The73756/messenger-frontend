@@ -4,6 +4,7 @@ export interface SpritesMap {
     | "clip"
     | "dots"
     | "file"
+    | "gift"
     | "image"
     | "micro"
     | "music"
@@ -18,21 +19,32 @@ export interface SpritesMap {
   player: "next" | "pause" | "play" | "prev" | "volume";
   settings:
     | "account"
+    | "bell-none"
     | "bell"
+    | "castle"
+    | "check-mark"
     | "delete"
     | "exit"
     | "flip"
     | "friends"
+    | "gift"
     | "group"
     | "message"
+    | "microphone"
     | "moon"
     | "notes"
     | "pen"
     | "photo"
+    | "picture"
+    | "points"
+    | "repost"
     | "rotate"
     | "save"
     | "search"
-    | "tools";
+    | "smiley"
+    | "tel"
+    | "tools"
+    | "video";
   social: "google" | "vkontakte";
 }
 
@@ -42,6 +54,7 @@ export const SPRITES_META: { [K in keyof SpritesMap]: SpritesMap[K][] } = {
     "clip",
     "dots",
     "file",
+    "gift",
     "image",
     "micro",
     "music",
@@ -57,21 +70,32 @@ export const SPRITES_META: { [K in keyof SpritesMap]: SpritesMap[K][] } = {
   player: ["next", "pause", "play", "prev", "volume"],
   settings: [
     "account",
+    "bell-none",
     "bell",
+    "castle",
+    "check-mark",
     "delete",
     "exit",
     "flip",
     "friends",
+    "gift",
     "group",
     "message",
+    "microphone",
     "moon",
     "notes",
     "pen",
     "photo",
+    "picture",
+    "points",
+    "repost",
     "rotate",
     "save",
     "search",
+    "smiley",
+    "tel",
     "tools",
+    "video",
   ],
   social: ["google", "vkontakte"],
 };

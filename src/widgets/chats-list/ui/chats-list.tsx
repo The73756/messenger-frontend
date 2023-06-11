@@ -6,8 +6,13 @@ import { ChatListNav } from "./chat-list-nav";
 
 export const ChatsList = () => {
   return (
-    <Resizer enable={{ right: true }}>
-      <aside className="relative rounded-[15px] bg-neutral w-[320px] height-widget flex flex-col">
+    <Resizer
+      defaultSize={{ width: 320, height: "100%" }}
+      minWidth={180}
+      maxWidth={450}
+      className="w-80"
+      enable={{ right: true }}>
+      <aside className="height-widget relative flex w-full flex-col rounded-4 bg-neutral">
         <ChatListNav />
         <ChatListChats />
         <ChatListBtn />
