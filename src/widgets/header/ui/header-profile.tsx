@@ -6,8 +6,8 @@ import { Icon } from "@/shared/ui";
 
 export const HeaderProfile = () => {
   return (
-    <div className="rounded-[15px] bg-neutral px-[20px] py-[15px]">
-      <button className="btn-rect mr-5">
+    <div className="rounded-xl bg-neutral px-[20px] py-[15px]">
+      <button className="btn btn-rect mr-5">
         <Icon name="settings/bell" className="w-[25px] h-[25px]" />
       </button>
       <Link href={`${routes.ACCOUNT}`} className="relative h-10 w-10">

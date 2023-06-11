@@ -53,11 +53,26 @@
 
   .height-widget {
     --height-header: 133px;
-    --offset-bottom: 40px;
+    --offset-bottom: 20px;
     height: calc(100vh - (var(--height-header) + var(--offset-bottom)));
   }
 
-  .btn-rect {
-    @apply btn flex h-11 min-h-0 w-11 items-center justify-center gap-[15px] rounded-[10px] border-none p-0 hover:bg-primary-rgba hover:text-primary;
+  /* buttons */
+  .btn.btn-circle {
+    @apply flex min-h-0 items-center justify-center rounded-full border-none bg-transparent p-0 text-white hover:bg-white/10;
+  }
+  .btn.btn-fill {
+    @apply bg-primary text-white;
+  }
+  .btn.btn-rect {
+    @apply flex h-11 min-h-0 w-11 items-center justify-center rounded-[10px] border-none p-0 hover:bg-primary-rgba hover:text-primary;
+  }
+
+  /* -- dropdown */
+  .dropdown-content {
+    @apply right-0 rounded-2xl bg-primary/90 p-1;
+  }
+  .dropdown-content li {
+    @apply flex cursor-pointer items-center gap-2.5 whitespace-nowrap rounded-2xl p-1.5 text-xs font-medium hover:bg-white/10;
   }
 }
