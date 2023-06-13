@@ -33,13 +33,11 @@ export const MainLayout = ({ children }: PropsWithChildren) => {
         .unwrap()
         .then((data) => {
           checkIsUserProfileCompleted(data);
+          setIsLoading(false);
         })
         .catch(() => {
           router.push(routes.LOGIN);
           toast.error("Вы не авторизованы, повторите вход!");
-        })
-        .finally(() => {
-          setIsLoading(false);
         });
     } else {
       checkIsUserProfileCompleted(user);

@@ -9,7 +9,7 @@ export const ChatInput = () => {
   const [message, setMessage] = useState("");
 
   return (
-    <div className="flex gap-4 text-white pt-2.5">
+    <div className="flex gap-4 pt-2.5 text-white">
       <button className="btn-fill btn-circle btn h-12 w-12">
         <Icon name="settings/smiley" className="h-8 w-8" />
       </button>
@@ -21,22 +21,22 @@ export const ChatInput = () => {
           placeholder="Напишите сообщение..."
           className="flex-1 resize-none self-center bg-transparent py-2.5 pl-5 placeholder-current scrollbar-none focus:outline-none"
         />
-        <div className="dropdown dropdown-top">
+        <div className="dropdown-top dropdown">
           <ul tabIndex={0} className="dropdown-content mb-2.5">
-            <li className="flex items-center gap-2.5 whitespace-nowrap p-1.5 rounded-2xl cursor-pointer hover:bg-white/10">
+            <li className="flex cursor-pointer items-center gap-2.5 whitespace-nowrap rounded-2xl p-1.5 hover:bg-white/10">
               <Icon name="settings/picture" className="h-5 w-5" />
               Фото или видео
             </li>
-            <li className="flex items-center gap-2.5 whitespace-nowrap p-1.5 rounded-2xl cursor-pointer hover:bg-white/10">
+            <li className="flex cursor-pointer items-center gap-2.5 whitespace-nowrap rounded-2xl p-1.5 hover:bg-white/10">
               <Icon name="chat/file" className="h-5 w-5" />
               Файлы
             </li>
-            <li className="flex items-center gap-2.5 whitespace-nowrap p-1.5 rounded-2xl cursor-pointer hover:bg-white/10">
+            <li className="flex cursor-pointer items-center gap-2.5 whitespace-nowrap rounded-2xl p-1.5 hover:bg-white/10">
               <Icon name="settings/gift" className="h-5 w-5" />
               Gift Premium
             </li>
           </ul>
-          <button tabIndex={0} className="px-5 py-3 hover:opacity-50">
+          <button tabIndex={0} className="px-5 py-3 transition-opacity hover:opacity-50">
             <Icon name="chat/clip" className="h-6 w-6" />
           </button>
         </div>
