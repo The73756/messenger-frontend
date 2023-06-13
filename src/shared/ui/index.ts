@@ -6,3 +6,4 @@ export { Button } from "./button";
 export { Select } from "./select";
 export { Popup } from "./popup";
 export { Textarea } from "./textarea";
+export { Loader } from "./loader";

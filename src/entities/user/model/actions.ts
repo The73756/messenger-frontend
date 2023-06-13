@@ -1,10 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import { apiClient, LoginWithEmailDto, RegisterWithEmailDto, UserResponse } from "@/shared/api";
-import { UserUpdate } from "@/shared/constants";
+import { apiClient, LoginWithEmailDto, RegisterWithEmailDto, updateUserData } from "@/shared/api";
 
 export const registration = createAsyncThunk(
-  "auth/registration",
+  "registration/registration",
   async (user: RegisterWithEmailDto, thunkApi) => {
     try {
       const { data } = await apiClient.authControllerRegisterByEmail(user);
@@ -16,7 +15,7 @@ export const registration = createAsyncThunk(
 );
 
 export const login = createAsyncThunk(
-  "auth/login",
+  "registration/login",
   async (userData: LoginWithEmailDto, thunkApi) => {
     try {
       const { data: resLogin } = await apiClient.authControllerLoginWithEmail(userData);
@@ -31,7 +30,7 @@ export const login = createAsyncThunk(
   },
 );
 
-export const checkAuth = createAsyncThunk("auth/check", async (_, thunkApi) => {
+export const checkAuth = createAsyncThunk("registration/check", async (_, thunkApi) => {
   try {
     const { data } = await apiClient.userControllerGetCurrentUser({
       headers: {
@@ -44,11 +43,15 @@ export const checkAuth = createAsyncThunk("auth/check", async (_, thunkApi) => {
   }
 });
 
-export const updateUser = createAsyncThunk("user/update", async (user: UserUpdate, thunkApi) => {
-  try {
-    const { data } = await apiClient.usersControllerUpdateOne(user);
-    return data;
-  } catch (e: any) {
-    return thunkApi.rejectWithValue(e.response.data.message);
-  }
-});
+export const updateUser = createAsyncThunk(
+  "user/update",
+  async (data: updateUserData, thunkApi) => {
+    const { userId, userData } = data;
+    try {
+      const { data } = await apiClient.usersControllerUpdateOne(userId, userData);
+      return data;
+    } catch (e: any) {
+      return thunkApi.rejectWithValue(e.response.data.message);
+    }
+  },
+);

@@ -21,7 +21,9 @@ export const Header = () => {
   }, []);
 
   return (
-    <div {...handlersSwipe} className="navbar p-0 pt-10 z-10 mx-auto mb-[15px] gap-[15px] items-stretch justify-between">
+    <div
+      {...handlersSwipe}
+      className="navbar z-10 mx-auto mb-4 items-stretch justify-between gap-4 p-0 pt-10">
       <HeaderNav />
       <HeaderMiddle />
       <HeaderProfile />

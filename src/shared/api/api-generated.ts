@@ -376,7 +376,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * @tags Auth
      * @name AuthControllerLoginWithEmail
      * @summary Авторизация с email и паролем
-     * @request POST:/api/auth/login/email
+     * @request POST:/api/registration/login/email
      */
     authControllerLoginWithEmail: (data: LoginWithEmailDto, params: RequestParams = {}) =>
       this.request<LoginResponse, any>({
@@ -394,7 +394,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * @tags Auth
      * @name AuthControllerRegisterByEmail
      * @summary Регистрация через email и пароль
-     * @request POST:/api/auth/register/email
+     * @request POST:/api/registration/register/email
      */
     authControllerRegisterByEmail: (data: RegisterWithEmailDto, params: RequestParams = {}) =>
       this.request<RegisterResponse, any>({
@@ -412,7 +412,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * @tags Auth
      * @name AuthControllerRefreshTokens
      * @summary Обновление пары access и refersh токенов
-     * @request POST:/api/auth/refresh-tokens
+     * @request POST:/api/registration/refresh-tokens
      */
     authControllerRefreshTokens: (params: RequestParams = {}) =>
       this.request<LoginResponse, any>({
