@@ -6,13 +6,13 @@ import { Icon } from "@/shared/ui";
 
 export const HeaderProfile = () => {
   return (
-    <div className="rounded-xl bg-neutral px-[20px] py-[15px]">
-      <button className="btn btn-rect mr-5">
-        <Icon name="settings/bell" className="w-[25px] h-[25px]" />
+    <div className="rounded-xl bg-neutral px-5 py-4">
+      <button className="btn-rect btn mr-5">
+        <Icon name="settings/bell" className="h-6 w-6" />
       </button>
       <Link href={`${routes.ACCOUNT}`} className="relative h-10 w-10">
         <Image fill src="/image/avatar.jpg" alt="Аватар" className="rounded-full" />
       </Link>
     </div>
-  )
-}
+  );
+};

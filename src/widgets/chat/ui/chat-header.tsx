@@ -3,7 +3,7 @@ import { ChatHeaderNav } from "./chat-header-nav";
 
 export const ChatHeader = () => {
   return (
-    <div className="flex items-center justify-between py-2.5 px-6 bg-primary text-white">
+    <div className="flex items-center justify-between rounded-2xl bg-primary px-6 py-2.5 text-white">
       <ChatHeaderInfo />
       <ChatHeaderNav />
     </div>

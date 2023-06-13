@@ -4,9 +4,8 @@ import { ChatBody } from "./chat-body";
 import { ChatHeader } from "./chat-header";
 
 export const Chat = () => {
-
   return (
-    <div className="height-widget rounded-xl flex-1 overflow-hidden flex flex-col">
+    <div className="height-widget flex flex-1 flex-col overflow-hidden rounded-xl">
       <ChatHeader />
       <ChatBody />
       <ChatInput />

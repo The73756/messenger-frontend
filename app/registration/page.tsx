@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 
-import { AuthPage } from "@/pages/auth-page";
+import { RegistrationPage } from "@/pages/registration-page";
 
 export const metadata = {
   title: "Messenger - Регистрация",
@@ -8,7 +8,7 @@ export const metadata = {
 };
 
 const Auth: NextPage = () => {
-  return <AuthPage />;
+  return <RegistrationPage />;
 };
 
 export default Auth;

@@ -2,21 +2,21 @@ import { Icon } from "@/shared/ui";
 
 export const HeaderNav = () => {
   return (
-    <div className="flex justify-between w-[320px] rounded-xl bg-neutral px-4 py-[15px]">
-      <button className="btn btn-rect">
-        <Icon name="settings/search" className="block h-[30px] w-[30px]" />
+    <div className="flex w-[320px] justify-between rounded-xl bg-neutral px-4 py-4">
+      <button className="btn-rect btn">
+        <Icon name="settings/search" className="header-nav-btn" />
       </button>
-      <button className="btn btn-rect">
-        <Icon name="settings/moon" className="block h-[30px] w-[30px]" />
+      <button className="btn-rect btn">
+        <Icon name="settings/moon" className="header-nav-btn" />
       </button>
-      <button className="btn btn-rect">
-        <Icon name="settings/tools" className="block h-[30px] w-[30px]" />
+      <button className="btn-rect btn">
+        <Icon name="settings/tools" className="header-nav-btn" />
       </button>
-      <button className="btn btn-rect">
-        <Icon name="settings/friends" className="block h-[30px] w-[30px]" />
+      <button className="btn-rect btn">
+        <Icon name="settings/friends" className="header-nav-btn" />
       </button>
-      <button className="btn btn-rect">
-        <Icon name="settings/notes" className="block h-[30px] w-[30px]" />
+      <button className="btn-rect btn">
+        <Icon name="settings/notes" className="header-nav-btn" />
       </button>
     </div>
   );

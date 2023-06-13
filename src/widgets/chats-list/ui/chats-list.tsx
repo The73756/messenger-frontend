@@ -12,7 +12,7 @@ export const ChatsList = () => {
       maxWidth={450}
       className="w-80"
       enable={{ right: true }}>
-      <aside className="height-widget relative flex w-full flex-col rounded-4 bg-neutral">
+      <aside className="height-widget rounded-4 relative flex w-full flex-col overflow-hidden rounded-2xl bg-neutral">
         <ChatListNav />
         <ChatListChats />
         <ChatListBtn />

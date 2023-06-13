@@ -1,1 +1,1 @@
-export { emailRule, nameRule, passwordRule } from "./input-validate";
+export * from "./input-validate";
