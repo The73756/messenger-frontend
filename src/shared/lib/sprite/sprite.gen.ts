@@ -19,16 +19,22 @@ export interface SpritesMap {
   player: "next" | "pause" | "play" | "prev" | "volume";
   settings:
     | "account"
+    | "audio"
     | "bell-none"
     | "bell"
     | "castle"
     | "check-mark"
+    | "close"
     | "delete"
     | "exit"
+    | "files"
     | "flip"
     | "friends"
     | "gift"
     | "group"
+    | "info"
+    | "link"
+    | "media"
     | "message"
     | "microphone"
     | "moon"
@@ -37,6 +43,7 @@ export interface SpritesMap {
     | "photo"
     | "picture"
     | "points"
+    | "profile"
     | "repost"
     | "rotate"
     | "save"
@@ -70,16 +77,22 @@ export const SPRITES_META: { [K in keyof SpritesMap]: SpritesMap[K][] } = {
   player: ["next", "pause", "play", "prev", "volume"],
   settings: [
     "account",
+    "audio",
     "bell-none",
     "bell",
     "castle",
     "check-mark",
+    "close",
     "delete",
     "exit",
+    "files",
     "flip",
     "friends",
     "gift",
     "group",
+    "info",
+    "link",
+    "media",
     "message",
     "microphone",
     "moon",
@@ -88,6 +101,7 @@ export const SPRITES_META: { [K in keyof SpritesMap]: SpritesMap[K][] } = {
     "photo",
     "picture",
     "points",
+    "profile",
     "repost",
     "rotate",
     "save",

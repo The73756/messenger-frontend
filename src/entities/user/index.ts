@@ -1,2 +1,2 @@
 export { userSlice, registration, login, checkAuth, userApi, updateUser } from "./model";
-export { UserFriend } from "./ui";
+export { UserFriend, UserCard } from "./ui";
