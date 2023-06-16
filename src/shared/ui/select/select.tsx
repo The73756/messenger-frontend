@@ -2,8 +2,6 @@
 
 import { MouseEvent, useState } from "react";
 
-import { Icon } from "@/shared/ui";
-
 import SelectItem from "./select-item";
 
 interface SelectProps<T> {

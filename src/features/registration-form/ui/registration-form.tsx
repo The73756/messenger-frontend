@@ -8,12 +8,12 @@ import { toast } from "react-hot-toast";
 import { registration } from "@/entities/user";
 
 import { routes } from "@/shared/constants";
-import { emailRule, nameRule, passwordRule } from "@/shared/helpers";
+import { emailRule, nickNameRule, passwordRule } from "@/shared/helpers";
 import { useAppDispatch, useAppSelector } from "@/shared/model";
 import { Button, IconBtn, Input } from "@/shared/ui";
 
 interface IFormInputs {
-  name: string;
+  nickname: string;
   email: string;
   password: string;
   confirmPassword: string;
@@ -66,10 +66,10 @@ export const RegistrationForm = () => {
             autoComplete="email"
           />
           <Input
-            register={register("name", nameRule)}
+            register={register("nickname", nickNameRule)}
             id="name"
             label="Никнейм"
-            error={errors.name}
+            error={errors.nickname}
             placeholder="Никнейм"
             autoComplete="nickname"
           />

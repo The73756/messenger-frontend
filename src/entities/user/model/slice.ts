@@ -28,9 +28,8 @@ export const userSlice = createSlice({
       state.error = "";
     },
     tokenReceived(state, action) {
-      console.log(action.payload.accessToken)
       localStorage.setItem("accessToken", action.payload.accessToken);
-    }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -60,6 +59,6 @@ export const userSlice = createSlice({
       })
       .addCase(updateUser.fulfilled.type, (state, action: PayloadAction<UserResponse>) => {
         state.user = action.payload;
-      })
+      });
   },
 });
