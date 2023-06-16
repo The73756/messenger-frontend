@@ -6,7 +6,7 @@ import { toast } from "react-hot-toast";
 import { updateUser } from "@/entities/user";
 
 import { updateUserData } from "@/shared/api";
-import { nameRule } from "@/shared/helpers";
+import { nameRule, nickNameRule } from "@/shared/helpers";
 import { useAppDispatch, useAppSelector } from "@/shared/model";
 import { Input, Textarea } from "@/shared/ui";
 
@@ -84,16 +84,10 @@ export const ChangeUserInfo = () => {
       />
 
       <Input
-        register={register("nickname", {
-          required: true,
-          pattern: {
-            value: /^[a-zA-Z0-9_]+$/,
-            message: "Разрешены только латинские буквы, цифры и _",
-          },
-        })}
+        register={register("nickname", nickNameRule)}
         className="text-xl"
         label={`Псевдоним - @${watchNickname}`}
-        placeholder="super-ivan"
+        placeholder="super_ivan"
         error={errors.nickname}
         id="nickname"
         autoComplete="nickname"
