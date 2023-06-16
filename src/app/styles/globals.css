@@ -48,7 +48,7 @@
   }
 
   .scroll {
-    @apply scrollbar scrollbar-thumb-primary scrollbar-w-1;
+    @apply scrollbar scrollbar-thumb-primary scrollbar-w-1 scrollbar-h-1;
   }
 
   .height-widget {
@@ -67,7 +67,7 @@
   }
 
   .btn.btn-rect {
-    @apply flex h-11 min-h-0 w-11 items-center justify-center rounded-[10px] border-none p-0 hover:bg-primary-rgba hover:text-primary;
+    @apply flex h-11 min-h-0 w-11 items-center justify-center rounded-lg border-none p-0 hover:bg-primary-rgba hover:text-primary;
   }
 
   .header-nav-btn {
