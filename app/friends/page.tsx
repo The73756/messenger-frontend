@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 
-import { FriendsPage } from "@/pages/friends-page";
+import { FriendsPage } from "@/src-pages/friends-page";
 
 export const metadata = {
   title: "Messenger - Мои друзья",

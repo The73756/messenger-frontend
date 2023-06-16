@@ -1,4 +1,4 @@
-import { AccountPage } from "@/pages/account-page";
+import { AccountPage } from "@/src-pages/account-page";
 
 export const metadata = {
   title: "Messenger - Вход",

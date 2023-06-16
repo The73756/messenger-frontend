@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 
-import { RegistrationPage } from "@/pages/registration-page";
+import { RegistrationPage } from "@/src-pages/registration-page";
 
 export const metadata = {
   title: "Messenger - Регистрация",
