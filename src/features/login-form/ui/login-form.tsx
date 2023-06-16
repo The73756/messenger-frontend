@@ -81,7 +81,7 @@ export const LoginForm = () => {
             Войти
           </Button>
           <div className="mt-5 flex justify-center">
-            <Link href="/auth">
+            <Link href={routes.REGISTRATION}>
               <p className="text-center text-xs font-medium">Нет аккаунта? Зарегистрируйтесь</p>
             </Link>
           </div>

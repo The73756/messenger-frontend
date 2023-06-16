@@ -21,7 +21,6 @@ export const MainLayout = ({ children }: PropsWithChildren) => {
 
   const checkIsUserProfileCompleted = (userData: UserResponse | null) => {
     if (userData && (!userData?.nickname || !userData?.firstName)) {
-      console.log(userData);
       router.push(routes.ACCOUNT);
       toast.error("Заполните профиль!");
     }
