@@ -1,5 +1,5 @@
 import { routes } from "@/shared/constants/routes";
-import { SpriteKey } from "@/shared/lib";
+import { SpriteKey } from "@/shared/lib/sprite";
 
 interface IMenuItem {
   iconName: SpriteKey;

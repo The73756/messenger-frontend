@@ -12,7 +12,7 @@
 export interface LoginWithEmailDto {
   /**
    * Email пользователя
-   * @example "Kaylin25@hotmail.com"
+   * @example "Kolby35@yahoo.com"
    */
   email: string;
   /**
@@ -30,7 +30,7 @@ export interface LoginResponse {
 export interface RegisterWithEmailDto {
   /**
    * Email пользователя
-   * @example "Elroy.Hane24@hotmail.com"
+   * @example "Kayla.Walker@yahoo.com"
    */
   email: string;
   /**
@@ -53,21 +53,47 @@ export interface RegisterResponse {
   result: boolean;
 }
 
+export interface ResponseMany {
+  /**
+   * Сколько взять записей в БД
+   * @max 30
+   * @default 25
+   * @example 4
+   */
+  limit?: number;
+  /**
+   * Сколько нужно отступить записей, что-бы взять N. Высчитывается по ф-уле: offset = offset * limit
+   * @example 2
+   */
+  offset?: number;
+  /**
+   * Кол-во записей в БД
+   * @default []
+   * @example 4
+   */
+  total: number;
+  /**
+   * Набор данных
+   * @default []
+   */
+  rows: any[][];
+}
+
 export interface UserResponse {
   /**
    * Идентификатор пользователя
-   * @example "feef57ba-1e28-4147-ac80-cf5c40875a84"
+   * @example "4b044673-09ae-4b92-8a67-dcfd0b5dc159"
    */
   id: string;
   /**
    * Электронная почта пользователя
-   * @example "Malvina28@hotmail.com"
+   * @example "Alexandro91@gmail.com"
    */
   email: string;
   /**
    * Дата создания учетной записи
    * @format date-time
-   * @default "2023-05-12T17:19:58.861Z"
+   * @default "2023-06-10T06:51:36.030Z"
    * @example "2022-12-31T21:00:00.000Z"
    */
   createdAt: string;
@@ -105,7 +131,7 @@ export interface UserResponse {
   photo: string[];
   /**
    * Номер телефона пользователя
-   * @example "79912647771"
+   * @example "79320526937"
    */
   phone?: number;
   /**
@@ -125,6 +151,64 @@ export interface UserResponse {
   roles: string[];
 }
 
+export interface UpdateUserDto {
+  /**
+   * Email пользователя
+   * @example "Marge.Kerluke@yahoo.com"
+   */
+  email?: string;
+  /**
+   * Ник пользователя
+   * @example "nickname"
+   */
+  nickname?: string;
+  /**
+   * Имя пользователя
+   * @example "Иван"
+   */
+  firstName?: string;
+  /**
+   * Фамилия пользователя
+   * @example "Иванов"
+   */
+  lastName?: string;
+  /**
+   * Дата рождения
+   * @example "Mon Jan 10 2000 03:00:00 GMT+0300 (Moscow Standard Time)"
+   */
+  birthday?: string;
+  /**
+   * Пол пользователя
+   * @example "муж"
+   */
+  sex?: string;
+  /**
+   * Фото пользователя
+   * @example "/photos/1.jpg"
+   */
+  photo?: string[];
+  /**
+   * Тел пользователя
+   * @example "7 991-080-8530"
+   */
+  phone?: string;
+  /**
+   * Статус пользователя
+   * @example "CREATED"
+   */
+  status?: string;
+  /**
+   * Описание пользователя
+   * @example "Что-то интересное обо мне"
+   */
+  aboutMe?: string;
+  /**
+   * Пароль пользователя
+   * @example "Qwerty1234!"
+   */
+  password?: string;
+}
+
 import axios, {
   AxiosInstance,
   AxiosRequestConfig,
@@ -132,7 +216,6 @@ import axios, {
   HeadersDefaults,
   ResponseType,
 } from "axios";
-import { UserUpdate } from "../constants";
 
 export type QueryParamsType = Record<string | number, any>;
 
@@ -293,7 +376,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * @tags Auth
      * @name AuthControllerLoginWithEmail
      * @summary Авторизация с email и паролем
-     * @request POST:/api/auth/login/email
+     * @request POST:/api/registration/login/email
      */
     authControllerLoginWithEmail: (data: LoginWithEmailDto, params: RequestParams = {}) =>
       this.request<LoginResponse, any>({
@@ -311,7 +394,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * @tags Auth
      * @name AuthControllerRegisterByEmail
      * @summary Регистрация через email и пароль
-     * @request POST:/api/auth/register/email
+     * @request POST:/api/registration/register/email
      */
     authControllerRegisterByEmail: (data: RegisterWithEmailDto, params: RequestParams = {}) =>
       this.request<RegisterResponse, any>({
@@ -329,7 +412,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * @tags Auth
      * @name AuthControllerRefreshTokens
      * @summary Обновление пары access и refersh токенов
-     * @request POST:/api/auth/refresh-tokens
+     * @request POST:/api/registration/refresh-tokens
      */
     authControllerRefreshTokens: (params: RequestParams = {}) =>
       this.request<LoginResponse, any>({
@@ -346,11 +429,30 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * @name UsersControllerFindAll
      * @summary Получить пользователей
      * @request GET:/api/users
+     * @secure
      */
-    usersControllerFindAll: (params: RequestParams = {}) =>
-      this.request<UserResponse[], any>({
+    usersControllerFindAll: (
+      query?: {
+        /**
+         * Сколько взять записей в БД
+         * @max 30
+         * @default 25
+         * @example 4
+         */
+        limit?: number;
+        /**
+         * Сколько нужно отступить записей, что-бы взять N. Высчитывается по ф-уле: offset = offset * limit
+         * @example 2
+         */
+        offset?: number;
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<ResponseMany, any>({
         path: `/api/users`,
         method: "GET",
+        query: query,
+        secure: true,
         format: "json",
         ...params,
       }),
@@ -362,11 +464,13 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * @name UsersControllerFindOne
      * @summary Получение пользователя
      * @request GET:/api/users/{userId}
+     * @secure
      */
     usersControllerFindOne: (userId: string, params: RequestParams = {}) =>
       this.request<UserResponse, any>({
         path: `/api/users/${userId}`,
         method: "GET",
+        secure: true,
         format: "json",
         ...params,
       }),
@@ -378,13 +482,16 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * @name UsersControllerUpdateOne
      * @summary Обновление данных пользователя
      * @request PUT:/api/users/{userId}
+     * @secure
      */
-    usersControllerUpdateOne: (user: UserUpdate, params: RequestParams = {}) =>
+    usersControllerUpdateOne: (userId: string, data: UpdateUserDto, params: RequestParams = {}) =>
       this.request<UserResponse, any>({
-        path: `/api/users/${user.id}`,
+        path: `/api/users/${userId}`,
         method: "PUT",
+        body: data,
+        secure: true,
+        type: ContentType.Json,
         format: "json",
-        body: user,
         ...params,
       }),
 
@@ -395,11 +502,13 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * @name UsersControllerDeleteOne
      * @summary Удаление пользователя
      * @request DELETE:/api/users/{userId}
+     * @secure
      */
     usersControllerDeleteOne: (userId: string, params: RequestParams = {}) =>
       this.request<UserResponse, any>({
         path: `/api/users/${userId}`,
         method: "DELETE",
+        secure: true,
         format: "json",
         ...params,
       }),
@@ -411,11 +520,13 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * @name UsersControllerFindByEmail
      * @summary Данные пользователя по его email
      * @request GET:/api/users/email/{email}
+     * @secure
      */
     usersControllerFindByEmail: (email: string, params: RequestParams = {}) =>
       this.request<UserResponse, any>({
         path: `/api/users/email/${email}`,
         method: "GET",
+        secure: true,
         format: "json",
         ...params,
       }),

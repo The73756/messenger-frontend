@@ -4,6 +4,7 @@ export interface SpritesMap {
     | "clip"
     | "dots"
     | "file"
+    | "gift"
     | "image"
     | "micro"
     | "music"
@@ -15,21 +16,42 @@ export interface SpritesMap {
     | "smile"
     | "video";
   figures: "arrow" | "check" | "cross";
-  notification: "bell";
-  player: "next" | "play" | "prev";
+  player: "next" | "pause" | "play" | "prev" | "volume";
   settings:
     | "account"
+    | "audio"
+    | "bell-none"
+    | "bell"
+    | "castle"
+    | "check-mark"
+    | "close"
     | "delete"
     | "exit"
+    | "files"
     | "flip"
     | "friends"
+    | "gift"
     | "group"
+    | "info"
+    | "link"
+    | "media"
     | "message"
+    | "microphone"
+    | "moon"
+    | "notes"
+    | "pen"
     | "photo"
+    | "picture"
+    | "points"
+    | "profile"
+    | "repost"
     | "rotate"
     | "save"
     | "search"
-    | "tools";
+    | "smiley"
+    | "tel"
+    | "tools"
+    | "video";
   social: "google" | "vkontakte";
 }
 
@@ -39,6 +61,7 @@ export const SPRITES_META: { [K in keyof SpritesMap]: SpritesMap[K][] } = {
     "clip",
     "dots",
     "file",
+    "gift",
     "image",
     "micro",
     "music",
@@ -51,21 +74,42 @@ export const SPRITES_META: { [K in keyof SpritesMap]: SpritesMap[K][] } = {
     "video",
   ],
   figures: ["arrow", "check", "cross"],
-  notification: ["bell"],
-  player: ["next", "play", "prev"],
+  player: ["next", "pause", "play", "prev", "volume"],
   settings: [
     "account",
+    "audio",
+    "bell-none",
+    "bell",
+    "castle",
+    "check-mark",
+    "close",
     "delete",
     "exit",
+    "files",
     "flip",
     "friends",
+    "gift",
     "group",
+    "info",
+    "link",
+    "media",
     "message",
+    "microphone",
+    "moon",
+    "notes",
+    "pen",
     "photo",
+    "picture",
+    "points",
+    "profile",
+    "repost",
     "rotate",
     "save",
     "search",
+    "smiley",
+    "tel",
     "tools",
+    "video",
   ],
   social: ["google", "vkontakte"],
 };

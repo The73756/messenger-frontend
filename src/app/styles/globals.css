@@ -42,4 +42,44 @@
   .menu :where(li:not(.menu-title):not(:empty)) > :where(*:not(ul):active) {
     @apply bg-item-focus text-base-content;
   }
+
+  .container {
+    @apply max-w-[1680px];
+  }
+
+  .scroll {
+    @apply scrollbar scrollbar-thumb-primary scrollbar-w-1 scrollbar-h-1;
+  }
+
+  .height-widget {
+    --height-header: 133px;
+    --offset-bottom: 20px;
+    height: calc(100vh - (var(--height-header) + var(--offset-bottom)));
+  }
+
+  /* buttons */
+  .btn.btn-circle {
+    @apply flex min-h-0 items-center justify-center rounded-full border-none bg-transparent p-0 text-white hover:bg-white/10;
+  }
+
+  .btn.btn-fill {
+    @apply bg-primary text-white;
+  }
+
+  .btn.btn-rect {
+    @apply flex h-11 min-h-0 w-11 items-center justify-center rounded-lg border-none p-0 hover:bg-primary-rgba hover:text-primary;
+  }
+
+  .header-nav-btn {
+    @apply block h-[30px] w-[30px];
+  }
+
+  /* -- dropdown */
+  .dropdown-content {
+    @apply right-0 rounded-2xl bg-primary/90 p-1;
+  }
+
+  .dropdown-content li {
+    @apply flex cursor-pointer items-center gap-2.5 whitespace-nowrap rounded-2xl p-1.5 text-xs font-medium hover:bg-white/10;
+  }
 }

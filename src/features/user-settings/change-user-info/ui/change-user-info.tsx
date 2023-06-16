@@ -1,10 +1,11 @@
 "use client";
 
 import { SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 
 import { updateUser } from "@/entities/user";
 
-import { UserUpdate } from "@/shared/constants";
+import { updateUserData } from "@/shared/api";
 import { nameRule } from "@/shared/helpers";
 import { useAppDispatch, useAppSelector } from "@/shared/model";
 import { Input, Textarea } from "@/shared/ui";
@@ -28,22 +29,32 @@ export const ChangeUserInfo = () => {
   } = useForm<IFormInputs>({
     mode: "onBlur",
     defaultValues: {
-      firstName: user?.firstName,
-      lastName: user?.lastName,
-      nickname: user?.nickname,
-      aboutMe: user?.aboutMe,
+      firstName: user?.firstName || "",
+      lastName: user?.lastName || "",
+      nickname: user?.nickname || "",
+      aboutMe: user?.aboutMe || "",
     },
   });
   const watchNickname = watch("nickname");
   const watchAboutMe = watch("aboutMe");
 
-  const onSubmit: SubmitHandler<IFormInputs> = (data) => {
+  const onSubmit: SubmitHandler<IFormInputs> = (userData) => {
     if (user) {
-      const updateUserObject: UserUpdate = {
-        id: user.id,
-        ...data,
+      const updateUserObject: updateUserData = {
+        userId: user.id,
+        userData,
       };
-      dispatch(updateUser(updateUserObject));
+      const updatePromise = dispatch(updateUser(updateUserObject))
+        .unwrap()
+        .then(() => {
+          reset(userData);
+        });
+
+      toast.promise(updatePromise, {
+        loading: "Сохраняем...",
+        success: "Сохранено!",
+        error: (err) => err,
+      });
     }
   };
 
@@ -56,6 +67,7 @@ export const ChangeUserInfo = () => {
         label="Имя"
         error={errors.firstName}
         id="firstName"
+        autoComplete="name"
       />
 
       <Input
@@ -68,6 +80,7 @@ export const ChangeUserInfo = () => {
         label="Фамилия (необязательно)"
         error={errors.lastName}
         id="lastName"
+        autoComplete="family-name"
       />
 
       <Input
@@ -79,10 +92,11 @@ export const ChangeUserInfo = () => {
           },
         })}
         className="text-xl"
-        label={`Ссылка на профиль - @${watchNickname}`}
+        label={`Псевдоним - @${watchNickname}`}
         placeholder="super-ivan"
         error={errors.nickname}
         id="nickname"
+        autoComplete="nickname"
       />
 
       <Textarea

@@ -1,7 +1,7 @@
 import { Chat } from "@/widgets/chat";
-import { ChatInfo } from "@/widgets/chat-info";
 import { ChatsList } from "@/widgets/chats-list";
 import { MainLayout } from "@/widgets/layouts";
+import { WidgetInfo } from "@/widgets/widget-info";
 
 export const HomePage = () => {
   return (
@@ -10,7 +10,7 @@ export const HomePage = () => {
         <div className="flex gap-4">
           <ChatsList />
           <Chat />
-          <ChatInfo />
+          <WidgetInfo />
         </div>
       </main>
     </MainLayout>
